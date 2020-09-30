@@ -32,6 +32,12 @@ public class Cliente extends Persona{
         return estado;
     }
 
+    public void setEstado() {
+        // CONSIDERO QUE ACÁ DEBE IR LA LÓGICA PARA CAMBIAR EL ESTADO SEGÚN LA FECHA ACTUAL Y EL ÚLTIMO PAGO 
+        // DEL CLIENTE, ADEMÁS QUE ACÁ ESTÁ EL ENUM QUE SE NECESITA, PERO NO ESTOY SEGURO JAJA
+        this.estado = estado.ACTIVO;
+    }
+    
     public void setEstado(EstadoCliente estado) {
         this.estado = estado;
     }
