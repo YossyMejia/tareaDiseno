@@ -12,13 +12,15 @@ import java.util.ArrayList;
  * @author admin
  */
 public class Clase {
+
+    private int idClase;
     private int capacidad;
     private Horario horario;
-    private ArrayList<Instructor> instructor;
+    private Instructor instructor;
     private ArrayList<Cliente> cliente;
     private Servicio servicio;
     
-    public Clase(int pCapacidad, Horario pHorario, ArrayList<Instructor> pInstructor, ArrayList<Cliente> pCliente, Servicio pServicio){
+    public Clase(int pCapacidad, Horario pHorario, Instructor pInstructor, ArrayList<Cliente> pCliente, Servicio pServicio){
         capacidad=pCapacidad;
         horario=pHorario;
         instructor=pInstructor;
@@ -42,11 +44,11 @@ public class Clase {
         this.horario = horario;
     }
 
-    public ArrayList<Instructor> getInstructor() {
+    public Instructor getInstructor() {
         return instructor;
     }
 
-    public void setInstructor(ArrayList<Instructor> instructor) {
+    public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
     }
 
@@ -54,8 +56,8 @@ public class Clase {
         return cliente;
     }
 
-    public void setCliente(ArrayList<Cliente> cliente) {
-        this.cliente = cliente;
+    public void addCliente(Cliente pCliente) {
+        cliente.add(pCliente);
     }
 
     public Servicio getServicio() {
@@ -64,6 +66,14 @@ public class Clase {
 
     public void setServicio(Servicio servicio) {
         this.servicio = servicio;
+    }
+    
+    public int getIdClase() {
+        return idClase;
+    }
+
+    public void setIdClase(int idClase) {
+        this.idClase = idClase;
     }
     
     

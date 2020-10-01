@@ -37,7 +37,7 @@ public class ControlClase {
     
     public Clase getClase(int pIdClase) {
         for (int i=0;i<clases.size();i++){
-            if(clases.get(i).idClase == pIdClase) return clases.get(i); //Falta un identificador en el modelo de Clase para poder identificar cada una de las clases
+            if(clases.get(i).getIdClase() == pIdClase) return clases.get(i); //Falta un identificador en el modelo de Clase para poder identificar cada una de las clases
         }                    
         return null;
     }
