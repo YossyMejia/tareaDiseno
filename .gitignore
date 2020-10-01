@@ -1,1 +1,3 @@
-/parteYochiFaker/nbproject/private/
+/parteYochiFaker/nbproject/*
+/parteYochiFaker/build.xml
+/parteYochiFaker/manifest.mf
