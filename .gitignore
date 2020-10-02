@@ -1,7 +1,6 @@
-/SalaEntrenamiento/
-/SalaEntrenamiento/build.xml
-/SalaEntrenamiento/manifest.mf
-!/SalaEntrenamiento/src/
-/SalaEntrenamiento/nbproject/private/
-/SalaEntrenamiento/build/
+
+SalaEntrenamiento/nbproject/
+
 *.properties
+
+SalaEntrenamiento/build/

@@ -33,6 +33,15 @@ public class SalaEntrenamiento {
         b.close();
     }
         
+        public bool void menuSalir(){
+            System.out.println("Desea escoger otra opcion");
+            System.out.println("1. Si");
+            System.out.println("2. No");
+            System.out.println("digite el numero");
+            entrada=
+            
+        }
+        
     
         public static void menu1(){
             Scanner entrada = new Scanner(System.in);
@@ -72,6 +81,8 @@ public class SalaEntrenamiento {
         public static void main3(){
             Scanner entrada = new Scanner(System.in);
             String nombre,apellido,cedula,telefono,correo,passw;
+            int x=0;
+            boolean iter=true;
           //ArrayList<Servicio> servicio;
             System.out.println("----- Creacion de Instructores -----"+"\n");
             System.out.println("Ingrese su nombre");
@@ -87,15 +98,31 @@ public class SalaEntrenamiento {
             System.out.println("Ingrese su contrasena");
             passw= entrada.nextLine();
             ArrayList<Servicio> listaServicios = control.allServicios();
-            for(int i=0; i<listaServicios.size();i++ ){
-                System.out.println(Integer.toString(i)+". "+listaServicios.get(i).getNombreEvento());
+            ArrayList<Servicio> serviciosInstructor= new ArrayList<Servicio>();
+            while(iter=true){
+                for(int i=0; i<listaServicios.size();i++ ){// imprime todos los servicios 
+                    System.out.println(Integer.toString(i)+". "+listaServicios.get(i).getNombreEvento());
+                System.out.println("Escriba el numero del servicio que ofrece o -1 para Salir");
+                if(x==-1){
+                    iter=false;
+                }
+                else{
+                    x=entrada.nextInt();
+                    serviciosInstructor.add(listaServicios.get(x));
+                    System.out.println("Desea ingresar ");
+                    
+                }
+
+            }
+                
             }
         }
 
 
     public static  void main(String[] args) {
 
-        System.out.println("das");
+        System.out.println("dasd");
+        
     }
     
 }
