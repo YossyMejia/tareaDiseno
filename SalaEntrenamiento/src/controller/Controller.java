@@ -20,10 +20,12 @@ import modelo.Clase;
  * @author kcorr
  */
 public class Controller {
-    Sala sala;
+    public Sala sala;
     
  
     public Controller(){
+        this.sala= new Sala();
+        
         
     }
     

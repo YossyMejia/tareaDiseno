@@ -16,6 +16,7 @@ public class ControlServicio {
     private ArrayList<Servicio> servicios= new ArrayList<Servicio>();
 
     public ControlServicio() {
+        
     }
 
     public ArrayList<Servicio> getServicios() {//devuelve todos los servicios

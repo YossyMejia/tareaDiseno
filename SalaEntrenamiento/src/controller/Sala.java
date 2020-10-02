@@ -23,20 +23,24 @@ public class Sala {
     public ControlInstructor controlInstructor;
     public ArrayList<ControlClase> listaControlClase;
     public ControlCliente controlCliente;
-    private final Horario horario;
+    private Horario horario;
     private Month mesActual;
-    /**
-     * 
-     * @param pNombre
-     * @param pCapacidad
-     * @param pMontoMensual
-     * @param pMontoMatricula
-     * @param pHorario
-     * @param pControlServicio
-     * @param pControlInstructor
-     * @param pControlClase
-     * @param pControlCliente 
-     */
+
+    
+    
+    public Sala(){
+        this.nombre="";
+        this.capacidadMaxima=0;
+        this.montoMensual=0;
+        this.controlServicio=new ControlServicio();
+        this.montoMatricula=0;
+        this.controlInstructor= new ControlInstructor();
+        this.listaControlClase= new ArrayList<ControlClase>();
+        this.controlCliente=new ControlCliente();
+        this.horario=new Horario();
+        this.mesActual = LocalDate.now().getMonth();   
+    }
+    
     public Sala(String pNombre, int pCapacidad, double pMontoMensual,double pMontoMatricula,Horario pHorario){
         nombre=pNombre;
         capacidadMaxima=pCapacidad;

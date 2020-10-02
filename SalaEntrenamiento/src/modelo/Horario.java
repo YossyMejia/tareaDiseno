@@ -31,6 +31,10 @@ public class Horario {
         this.horaFinal=pHoraFinal;
     }
 
+    public Horario() {
+        
+    }
+
     public String getDia() {
         return dia;
     }

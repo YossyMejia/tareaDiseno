@@ -36,6 +36,9 @@ enum Dia {
 
 public class SalaEntrenamiento {
 
+    /**
+     *
+     */
     public static Controller control;//la variable que contiene el controlador, la cual a su vez contiene la sala
 
     public void leerArchivo(String archivo) throws FileNotFoundException, IOException {//recibe una ruta y imprime linea por linea
@@ -57,10 +60,11 @@ public class SalaEntrenamiento {
 //            
 //        }
     public static void crearSala() {
+        
         Scanner entrada = new Scanner(System.in);
         String nombre;
-        String horaApertura;
-        String horaCierre;
+        int  horaApertura, minutoApertura;
+        int horaCierre, minutoCierre;
         double costoMatricula;
         double mensualidad;
         int capacidadMaxima;
@@ -68,10 +72,19 @@ public class SalaEntrenamiento {
         System.out.println("-----Configuracion de Sala-----" + "\n");
         System.out.println("Ingrese el nombre de la Sala ");
         nombre = entrada.nextLine();
-        System.out.println("Ingrese Hora de Apertura formato HH:mm");
-        horaApertura = entrada.nextLine();
-        System.out.println("Ingrese Hora de Cierre formato HH:mm");
-        horaCierre = entrada.nextLine();
+        
+        System.out.println("Ingrese Hora de Apertura formato 24H");
+        minutoApertura = entrada.nextInt();
+        
+        System.out.println("Ingrese el minuto de apertura");
+        horaApertura = entrada.nextInt();
+        
+        System.out.println("Ingrese Hora de Cierre formato 24H");
+        horaCierre = entrada.nextInt();
+        
+        System.out.println("Ingrese Minuto de Cierre");
+        minutoCierre = entrada.nextInt();
+        
         System.out.println("Ingrese el costo de la matricula");
         costoMatricula = entrada.nextDouble();
         System.out.println("Ingrese el costo de la mensualidad");
@@ -80,8 +93,8 @@ public class SalaEntrenamiento {
         capacidadMaxima = entrada.nextInt();
         System.out.println("Ingrese el aforo actual");
         aforoActual = entrada.nextInt();
-        LocalTime horaX = LocalTime.of(8, 10);
-        LocalTime horaY = LocalTime.of(22, 00);
+        LocalTime horaX = LocalTime.of(horaApertura, minutoApertura);
+        LocalTime horaY = LocalTime.of(horaCierre, minutoCierre);
         Horario horario = new Horario(horaX, horaY);
         control.createSala(nombre, capacidadMaxima, mensualidad, costoMatricula, horario);//se crea el objeto sala en el controlador
 
@@ -387,6 +400,7 @@ public class SalaEntrenamiento {
     }
     
     public static void main(String[] args) {
+        control = new Controller();
         
         Scanner entrada = new Scanner(System.in);
         int opcion;

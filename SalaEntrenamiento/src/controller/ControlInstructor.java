@@ -15,7 +15,7 @@ import modelo.Servicio;
  */
 public class ControlInstructor {
     
-    private ArrayList<Instructor> instructores;
+    private ArrayList<Instructor> instructores= new ArrayList<Instructor>();
 
     public ControlInstructor() {
     }
