@@ -8,7 +8,6 @@ package controller;
 import java.util.ArrayList;
 import java.util.Date;
 import modelo.Cliente;
-import static salaentrenamiento.SalaEntrenamiento.main6;
 
 /**
  *

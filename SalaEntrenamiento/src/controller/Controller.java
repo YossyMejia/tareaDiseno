@@ -33,14 +33,6 @@ public class Controller {
         
     }
     
-    /**
-     *
-     * @param pNombre
-     * @param pCapacidad
-     * @param pMontoMensual
-     * @param pMontoMatricula
-     * @param pHorario
-     */
     public void createSala(String pNombre, int pCapacidad, double pMontoMensual,double pMontoMatricula, Horario pHorario){
         
         this.sala = new Sala(pNombre,pCapacidad,pMontoMensual,pMontoMatricula,pHorario);
