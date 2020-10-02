@@ -17,14 +17,13 @@ public class Clase {
     private int capacidad;
     private Horario horario;
     private Instructor instructor;
-    private ArrayList<Cliente> cliente;
+    private ArrayList<Cliente> cliente = new ArrayList<>();
     private Servicio servicio;
     
-    public Clase(int pCapacidad, Horario pHorario, Instructor pInstructor, ArrayList<Cliente> pCliente, Servicio pServicio){
+    public Clase(int pCapacidad, Horario pHorario, Instructor pInstructor, Servicio pServicio){
         capacidad=pCapacidad;
         horario=pHorario;
         instructor=pInstructor;
-        cliente=pCliente;
         servicio=pServicio;
     }
 

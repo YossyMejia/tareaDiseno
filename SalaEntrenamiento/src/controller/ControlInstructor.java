@@ -15,7 +15,7 @@ import modelo.Servicio;
  */
 public class ControlInstructor {
     
-    private ArrayList<Instructor> instructor;
+    private ArrayList<Instructor> instructores;
 
     public ControlInstructor() {
     }
@@ -27,22 +27,13 @@ public class ControlInstructor {
     public void postInstructor(String pNombre, String pApellido, String pCedula, String pTelefono, String pCorreo, String pPassword, 
             String  pEstado, ArrayList<Servicio> pServicios) {
         Instructor instructor = new Instructor(pNombre, pApellido,pCedula, pTelefono, pCorreo,pPassword, pEstado,pServicios);
-        this.instructor.add(instructor);
+        this.instructores.add(instructor);
     }
     
-//    public ArrayList<Instructor> getInstructores(){
-//        //Tomar el arreglo de instructores
-//        this.instructor.add();
-//        return this.instructor;
-//    }
-    
-//    public arrayList<Instructor> getServiciosInstructor(){
-//        //Tomar el arreglo de la clase instructor
-//        return instructor;
-//    }
-    
-//    public boolean postServiciosInstructor(int key){
-//        
-//    }
+    public ArrayList<Instructor> getInstructores(){
+        return this.instructores;
+    }
+   
+  
     
 }

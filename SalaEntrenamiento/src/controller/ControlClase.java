@@ -10,6 +10,11 @@ import java.util.Date;
 import modelo.Clase;
 import modelo.Cliente;
 import modelo.Instructor;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
+import modelo.Horario;
+import modelo.Servicio;
 
 /**
  *
@@ -20,14 +25,18 @@ public class ControlClase {
     private String mesActual;  
     
     public ControlClase(){
-        
+        Month mesActual = LocalDate.now().getMonth();
+        this.mesActual=mesActual.toString();
     }
+    
     
     public ArrayList<Clase> getClases() {
         return clases;
     }
     
-    public void postClase(Clase pClase) {
+    public void postClase(int pCapacidad,LocalTime horaInicio,LocalTime horaFinal ,Instructor pInstructor, Servicio pServicio) {
+        Horario h = new Horario();
+        Clase c = new Clase(pCapacidad, pHorario, pInstructor,pServicio);
         clases.add(pClase);
     }
     

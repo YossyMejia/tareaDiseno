@@ -5,8 +5,12 @@
  */
 package controller;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
+import modelo.Clase;
+
 import modelo.Horario;
+import modelo.Instructor;
 import modelo.Servicio;
 
 /**
@@ -27,9 +31,17 @@ public class Controller {
         
     }
     
-    public void createSala(String pNombre, int pCapacidad, double pMontoMensual,double pMontoMatricula,Horario pHorario,ControlServicio pControlServicio,  
-            ControlInstructor pControlInstructor, ControlClase pControlClase, ControlCliente pControlCliente){
-        this.sala = new Sala(pNombre,pCapacidad,pMontoMensual,pMontoMatricula,pHorario,pControlServicio,pControlInstructor,pControlClase,pControlCliente);
+    /**
+     *
+     * @param pNombre
+     * @param pCapacidad
+     * @param pMontoMensual
+     * @param pMontoMatricula
+     * @param pHorario
+     */
+    public void createSala(String pNombre, int pCapacidad, double pMontoMensual,double pMontoMatricula, Horario pHorario){
+        
+        this.sala = new Sala(pNombre,pCapacidad,pMontoMensual,pMontoMatricula,pHorario);
     }
     
     public void createServicio(String pNombre, String pDescripcion){
@@ -38,6 +50,20 @@ public class Controller {
     
     public ArrayList<Servicio> allServicios(){
         return this.sala.controlServicio.getServicios();
+    }
+    
+    public ArrayList<Instructor> allInstructores(){
+        return this.sala.controlInstructor.getInstructores();
+    }
+    
+    public ArrayList<Clase> allClaseMes(){
+        return this.sala.listaControlClase.get( this.sala.listaControlClase.size()-1 ).getClases();
+    }
+    
+    
+    public void nuevaClase(int pCapacidad,LocalTime horaInicio,LocalTime horaFinal, Instructor pInstructor, Servicio pServicio){
+        this.sala.listaControlClase.get( this.sala.listaControlClase.size()-1 ).postClase( pCapacidad,horaInicio,horaFinal,pInstructor,pServicio);
+        
     }
 
 

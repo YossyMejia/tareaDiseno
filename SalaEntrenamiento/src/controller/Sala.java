@@ -5,6 +5,9 @@
  */
 package controller;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.ArrayList;
 import modelo.Horario;
 
 /**
@@ -18,9 +21,10 @@ public class Sala {
     public ControlServicio controlServicio;
     private double montoMatricula;
     public ControlInstructor controlInstructor;
-    public ControlClase controlClase;
+    public ArrayList<ControlClase> listaControlClase;
     public ControlCliente controlCliente;
     private final Horario horario;
+    private Month mesActual;
     /**
      * 
      * @param pNombre
@@ -33,17 +37,18 @@ public class Sala {
      * @param pControlClase
      * @param pControlCliente 
      */
-    public Sala(String pNombre, int pCapacidad, double pMontoMensual,double pMontoMatricula,Horario pHorario,ControlServicio pControlServicio,  
-            ControlInstructor pControlInstructor, ControlClase pControlClase, ControlCliente pControlCliente){
+    public Sala(String pNombre, int pCapacidad, double pMontoMensual,double pMontoMatricula,Horario pHorario){
         nombre=pNombre;
         capacidadMaxima=pCapacidad;
         montoMensual=pMontoMensual;
-        controlServicio=pControlServicio;
+        controlServicio=new ControlServicio();
         montoMatricula=pMontoMatricula;
-        controlInstructor=pControlInstructor;
-        controlClase=pControlClase;
-        controlCliente=pControlCliente;
+        controlInstructor=new ControlInstructor();
+        controlClase= new ArrayList<ControlClase>();
+        controlCliente=new ControlCliente();
         this.horario=pHorario;
+        controlClase.add(new ControlClase());
+        mesActual= LocalDate.now().getMonth();
     }
 
     public String getNombre() {
@@ -94,13 +99,7 @@ public class Sala {
         this.controlInstructor = controlInstructor;
     }
 
-    public ControlClase getControlClase() {
-        return controlClase;
-    }
 
-    public void setControlClase(ControlClase controlClase) {
-        this.controlClase = controlClase;
-    }
 
     public ControlCliente getControlCliente() {
         return controlCliente;

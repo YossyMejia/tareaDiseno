@@ -13,7 +13,9 @@ import java.util.Scanner;
 import controller.*;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import modelo.Clase;
 import modelo.Horario;
+import modelo.Instructor;
 import modelo.Servicio;
 
 /**
@@ -49,10 +51,6 @@ public class SalaEntrenamiento {
     
         public static void menu1(){
             Scanner entrada = new Scanner(System.in);
-            ControlServicio cServicio = new ControlServicio();
-            ControlCliente cCliente = new ControlCliente();
-            ControlClase cClase = new ControlClase();
-            ControlInstructor cInstructor = new ControlInstructor();
             String nombre;
             String horaApertura;
             String horaCierre;
@@ -78,7 +76,7 @@ public class SalaEntrenamiento {
             LocalTime horaX= LocalTime.of(8,10);
             LocalTime horaY= LocalTime.of(22,00);
             Horario horario = new Horario(horaX,horaY);
-            control.createSala(nombre, capacidadMaxima, mensualidad, costoMatricula, horario, cServicio, cInstructor, cClase, cCliente);//se crea el objeto sala en el controlador
+            control.createSala(nombre, capacidadMaxima, mensualidad, costoMatricula, horario);//se crea el objeto sala en el controlador
             
         }
         
@@ -128,8 +126,62 @@ public class SalaEntrenamiento {
         }
 
         public static void menuAllInstructores(){
-            
+            ArrayList<Instructor> lista = control.allInstructores();
+            for(int i=0; i<lista.size();i++){
+                System.out.println(i+1);
+                System.out.println(lista.get(i).getNombre()+" "+lista.get(i).getApellido());
+                System.out.println("Servicios: ");
+                for(int x=0;x<lista.get(i).getServicios().size();x++){
+                    System.out.println(lista.get(i).getServicios().get(x).getNombreEvento());             
+                }               
+            }
         
+        }
+        
+        public static void calendario(){
+            ArrayList<Clase> listita = control.allClaseMes();
+            for(int c=0; c<listita.size();c++){
+                System.out.println(listita.get(c).getServicio().getNombreEvento());
+                System.out.println(listita.get(c).getHorario().getDia());
+                System.out.println(listita.get(c).getHorario().getHoraInicio());
+                System.out.println(listita.get(c).getHorario().getHoraFinal());
+            }
+        }
+        
+        public static void menu5(){
+            String horaInicio,horaFinal,dia;
+            int numServicio, capacidad;
+            Scanner entrada = new Scanner(System.in);
+            int num=0;
+            System.out.println("Programar Clase ");
+            ArrayList<Instructor> lista = control.allInstructores();
+            for(int i=0; i<lista.size();i++){
+                System.out.println(i);
+                System.out.println(lista.get(i).getNombre()+" "+lista.get(i).getApellido());           
+            }
+            
+            System.out.println("Escriba el digito perteneciente a su nombre");
+            num=entrada.nextInt();
+            Instructor instructor = lista.get(num);
+            System.out.println("Calendario Actual");
+            calendario();
+            System.out.println("Ingrese la Hora de Inicio");
+            horaInicio= entrada.nextLine();
+            System.out.println("Ingrese la Hora de Finalizacion");
+            horaFinal= entrada.nextLine();
+            System.out.println("Ingrese la Capacidad maxima de Clientes en la clase");
+            capacidad= entrada.nextInt();
+            
+            for(int w=0; w< instructor.getServicios().size();w++){
+                System.out.print(w+1);
+                System.out.println(". "+instructor.getServicios().get(w).getNombreEvento());
+            }
+            System.out.println("Ingrese el digito que representa el servicio que desea impartir ");
+            numServicio= entrada.nextInt();
+            
+            
+            control.nuevaClase(capacidad,horaInicio,horaFinal,instructor ,instructor.getServicios().get(numServicio),);
+            
         }
     
         
