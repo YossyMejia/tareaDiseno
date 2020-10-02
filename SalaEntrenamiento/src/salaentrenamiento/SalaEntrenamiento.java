@@ -20,6 +20,10 @@ import modelo.Servicio;
  *
  * @author admin
  */
+
+    enum Estado{
+    TEMPORAL, FIJO, INVITADO;
+}
 public class SalaEntrenamiento {
     public static Controller control;//la variable que contiene el controlador, la cual a su vez contiene la sala
     
@@ -33,14 +37,14 @@ public class SalaEntrenamiento {
         b.close();
     }
         
-        public bool void menuSalir(){
-            System.out.println("Desea escoger otra opcion");
-            System.out.println("1. Si");
-            System.out.println("2. No");
-            System.out.println("digite el numero");
-            entrada=
-            
-        }
+//        public bool void menuSalir(){
+//            System.out.println("Desea escoger otra opcion");
+//            System.out.println("1. Si");
+//            System.out.println("2. No");
+//            System.out.println("digite el numero");
+//            entrada=
+//            
+//        }
         
     
         public static void menu1(){
@@ -78,7 +82,7 @@ public class SalaEntrenamiento {
             
         }
         
-        public static void main3(){
+        public static void menu3(){
             Scanner entrada = new Scanner(System.in);
             String nombre,apellido,cedula,telefono,correo,passw;
             int x=0;
@@ -109,16 +113,26 @@ public class SalaEntrenamiento {
                 else{
                     x=entrada.nextInt();
                     serviciosInstructor.add(listaServicios.get(x));
-                    System.out.println("Desea ingresar ");
-                    
+                    System.out.println("Desea ingresar otra opcion");
+                    System.out.println("1. Si");
+                    System.out.println("2. No");
+                    System.out.println("digite una opcion");
+                    x=entrada.nextInt();
+                    if(x!=1){
+                        iter=false;
+                    }
                 }
-
             }
-                
             }
+            control.nuevoInstructor(nombre, apellido, cedula, telefono, correo, passw, Estado.FIJO.name(), listaServicios);
         }
 
-
+        public static void menuAllInstructores(){
+            
+        
+        }
+    
+        
     public static  void main(String[] args) {
 
         System.out.println("dasd");

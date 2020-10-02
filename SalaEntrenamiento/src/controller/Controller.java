@@ -21,6 +21,12 @@ public class Controller {
         
     }
     
+    public void nuevoInstructor(String pNombre, String pApellido, String pCedula, String pTelefono, String pCorreo, String pPassword, 
+            String  pEstado, ArrayList<Servicio> pServicios){
+        this.sala.controlInstructor.postInstructor(pNombre, pApellido, pCedula, pTelefono, pCorreo, pPassword, pEstado, pServicios);
+        
+    }
+    
     public void createSala(String pNombre, int pCapacidad, double pMontoMensual,double pMontoMatricula,Horario pHorario,ControlServicio pControlServicio,  
             ControlInstructor pControlInstructor, ControlClase pControlClase, ControlCliente pControlCliente){
         this.sala = new Sala(pNombre,pCapacidad,pMontoMensual,pMontoMatricula,pHorario,pControlServicio,pControlInstructor,pControlClase,pControlCliente);
@@ -33,8 +39,8 @@ public class Controller {
     public ArrayList<Servicio> allServicios(){
         return this.sala.controlServicio.getServicios();
     }
-    
-    
+
+
     
 
     

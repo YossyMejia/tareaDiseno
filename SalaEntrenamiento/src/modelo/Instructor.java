@@ -11,13 +11,12 @@ import java.util.ArrayList;
  *
  * @author admin
  */
-enum Estado{
-    TEMPORAL, FIJO, INVITADO;
-}
+
 
 public class Instructor extends Persona{
-    private Estado estado;
+    private String estado;
     private ArrayList<Servicio> servicios;
+
 /**
  * 
  * @param pNombre
@@ -30,24 +29,14 @@ public class Instructor extends Persona{
  * @param pServicios 
  */
     public Instructor(String pNombre, String pApellido, String pCedula, String pTelefono, String pCorreo, String pPassword, 
-            Estado pEstado, ArrayList<Servicio> pServicios) {
+            String pEstado, ArrayList<Servicio> pServicios) {
         super(pNombre, pApellido, pCedula, pTelefono, pCorreo, pPassword);
         estado=pEstado;
         servicios=pServicios;
     }
 
-    public Instructor() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
 
     public ArrayList<Servicio> getServicios() {
         return servicios;

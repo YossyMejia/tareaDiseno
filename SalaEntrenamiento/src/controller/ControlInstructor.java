@@ -6,7 +6,6 @@
 package controller;
 
 import java.util.ArrayList;
-import modelo.Estado;
 import modelo.Instructor;
 import modelo.Servicio;
 
@@ -26,24 +25,24 @@ public class ControlInstructor {
 //    }
 
     public void postInstructor(String pNombre, String pApellido, String pCedula, String pTelefono, String pCorreo, String pPassword, 
-            Estado pEstado, ArrayList<Servicio> pServicios) {
+            String  pEstado, ArrayList<Servicio> pServicios) {
         Instructor instructor = new Instructor(pNombre, pApellido,pCedula, pTelefono, pCorreo,pPassword, pEstado,pServicios);
         this.instructor.add(instructor);
     }
     
-    public ArrayList<Instructor> getInstructores(){
-        //Tomar el arreglo de instructores
-        this.instructor.add();
-        return this.instructor;
-    }
+//    public ArrayList<Instructor> getInstructores(){
+//        //Tomar el arreglo de instructores
+//        this.instructor.add();
+//        return this.instructor;
+//    }
     
-    public arrayList<Instructor> getServiciosInstructor(){
-        //Tomar el arreglo de la clase instructor
-        return instructor;
-    }
+//    public arrayList<Instructor> getServiciosInstructor(){
+//        //Tomar el arreglo de la clase instructor
+//        return instructor;
+//    }
     
-    public boolean postServiciosInstructor(int key){
-        
-    }
+//    public boolean postServiciosInstructor(int key){
+//        
+//    }
     
 }
