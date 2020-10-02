@@ -13,47 +13,44 @@ import modelo.Servicio;
  * @author XPC
  */
 public class ControlServicio {
-    private ArrayList<Servicio> servicio;
+    private ArrayList<Servicio> servicios= new ArrayList<Servicio>();
 
     public ControlServicio() {
     }
 
-    public <any> getServicio() {
-        return servicio;
+    public ArrayList<Servicio> getServicios() {//devuelve todos los servicios
+        return servicios;
     }
 
-    public void setServicio(<any> servicio) {
-        this.servicio = servicio;
+    public void setServicio(ArrayList<Servicio> servicios) {//setea un arreglo de servicios
+        this.servicios = servicios;
     }
+ 
     
-    public ArrayList<Servicio> getServicio(int key){
-        //Crear un servicio en quemado anadirlo al array y retornarlo
-        this.servicio.add(); //objeto servicio
-        return this.servicio;
-    }
+//    public ArrayList<Servicio> getServicio(int key){
+//        //Crear un servicio en quemado anadirlo al array y retornarlo
+//        this.servicio.add(); //objeto servicio
+//        return this.servicio;
+//    }
             
-    public boolean postServicio(Servicio servicio){
+    public boolean postServicio(String pNombreEvento,String pDescripcion){// guarda un servicio en el arreglo de servicios
         boolean estado = false;
-        //Hacer un guardado del servicio
+        Servicio servicio = new Servicio(pNombreEvento,pDescripcion);
+        this.servicios.add(servicio);
         return estado;
-    }    
+    } 
     
     public boolean deleteServicio(int key){
         boolean estado = false;
         //Hacer un delete del array
         return estado;
     }
-            
-    public ArrayList<Servicio> getServicios(){
-        //Crear servicios en quemado anadirlo al array y retornarlo
-        this.servicio.add(); //objeto servicio
-        return this.servicio;
-    }
+
     
     public boolean modifyServicio(Servicio servicio){
         boolean estado = false;
         //Hacer un modify del objeto en el array
         return estado;
     }
-    
+   
 }

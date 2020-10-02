@@ -3,3 +3,5 @@
 /parteYochiFaker/manifest.mf
 !/parteYochiFaker/src/
 /SalaEntrenamiento/nbproject/private/
+/SalaEntrenamiento/build/
+*.properties

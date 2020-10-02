@@ -18,12 +18,26 @@ enum Estado{
 public class Instructor extends Persona{
     private Estado estado;
     private ArrayList<Servicio> servicios;
-
+/**
+ * 
+ * @param pNombre
+ * @param pApellido
+ * @param pCedula
+ * @param pTelefono
+ * @param pCorreo
+ * @param pPassword
+ * @param pEstado
+ * @param pServicios 
+ */
     public Instructor(String pNombre, String pApellido, String pCedula, String pTelefono, String pCorreo, String pPassword, 
             Estado pEstado, ArrayList<Servicio> pServicios) {
         super(pNombre, pApellido, pCedula, pTelefono, pCorreo, pPassword);
         estado=pEstado;
         servicios=pServicios;
+    }
+
+    public Instructor() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

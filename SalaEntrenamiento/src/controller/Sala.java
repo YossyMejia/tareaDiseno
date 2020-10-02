@@ -5,6 +5,8 @@
  */
 package controller;
 
+import modelo.Horario;
+
 /**
  *
  * @author admin
@@ -13,13 +15,25 @@ public class Sala {
     private String nombre;
     private int capacidadMaxima;
     private double montoMensual;
-    private ControlServicio controlServicio;
+    public ControlServicio controlServicio;
     private double montoMatricula;
-    private ControlInstructor controlInstructor;
-    private ControlClase controlClase;
-    private ControlCliente controlCliente;
-    
-    public Sala(String pNombre, int pCapacidad, double pMontoMensual, ControlServicio pControlServicio, double pMontoMatricula, 
+    public ControlInstructor controlInstructor;
+    public ControlClase controlClase;
+    public ControlCliente controlCliente;
+    private final Horario horario;
+    /**
+     * 
+     * @param pNombre
+     * @param pCapacidad
+     * @param pMontoMensual
+     * @param pMontoMatricula
+     * @param pHorario
+     * @param pControlServicio
+     * @param pControlInstructor
+     * @param pControlClase
+     * @param pControlCliente 
+     */
+    public Sala(String pNombre, int pCapacidad, double pMontoMensual,double pMontoMatricula,Horario pHorario,ControlServicio pControlServicio,  
             ControlInstructor pControlInstructor, ControlClase pControlClase, ControlCliente pControlCliente){
         nombre=pNombre;
         capacidadMaxima=pCapacidad;
@@ -29,6 +43,7 @@ public class Sala {
         controlInstructor=pControlInstructor;
         controlClase=pControlClase;
         controlCliente=pControlCliente;
+        this.horario=pHorario;
     }
 
     public String getNombre() {

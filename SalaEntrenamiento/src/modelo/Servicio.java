@@ -9,10 +9,16 @@ package modelo;
  *
  * @author admin
  */
+
+
 public class Servicio {
         private String nombreEvento;
         private String descripcion;
-
+/**
+ * 
+ * @param pNombreEvento
+ * @param pDescripcion 
+ */
     public Servicio(String pNombreEvento, String pDescripcion){
         nombreEvento=pNombreEvento;
         descripcion=pDescripcion;

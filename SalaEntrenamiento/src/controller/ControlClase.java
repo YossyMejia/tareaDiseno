@@ -17,7 +17,11 @@ import modelo.Instructor;
  */
 public class ControlClase {
     private ArrayList<Clase> clases=new ArrayList<Clase>();
-    private Date mesActual;  
+    private String mesActual;  
+    
+    public ControlClase(){
+        
+    }
     
     public ArrayList<Clase> getClases() {
         return clases;
@@ -48,11 +52,11 @@ public class ControlClase {
         } 
     }
     
-    public void setMesActual(Date pMesActual) {
+    public void setMesActual(String pMesActual) {
         this.mesActual=pMesActual;
     }
     
-    public Date getMesActual() {
+    public String getMesActual() {
         return mesActual;
     }
 }

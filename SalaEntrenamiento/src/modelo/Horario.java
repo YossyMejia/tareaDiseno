@@ -5,7 +5,8 @@
  */
 package modelo;
 
-import java.sql.Time;
+
+import java.time.LocalTime;
 
 /**
  *
@@ -18,13 +19,18 @@ enum Dia{
 
 public class Horario {
     private Dia dia;
-    private Time horaInicio;
-    private Time horaFinal;
+    private LocalTime horaInicio;
+    private LocalTime horaFinal;
     
-    public Horario(Dia pDia, Time pHoraInicio, Time pHoraFinal){
+    public Horario(Dia pDia, LocalTime pHoraInicio, LocalTime pHoraFinal){
         dia=pDia;
         horaInicio=pHoraInicio;
         horaFinal=pHoraFinal;
+    }
+    
+    public Horario(LocalTime pHoraInicio, LocalTime pHoraFinal){
+        this.horaInicio=pHoraInicio;
+        this.horaFinal=pHoraFinal;
     }
 
     public Dia getDia() {
@@ -35,19 +41,19 @@ public class Horario {
         this.dia = dia;
     }
 
-    public Time getHoraInicio() {
+    public LocalTime getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(Time horaInicio) {
+    public void setHoraInicio(LocalTime horaInicio) {
         this.horaInicio = horaInicio;
     }
 
-    public Time getHoraFinal() {
+    public LocalTime getHoraFinal() {
         return horaFinal;
     }
 
-    public void setHoraFinal(Time horaFinal) {
+    public void setHoraFinal(LocalTime horaFinal) {
         this.horaFinal = horaFinal;
     }
     
