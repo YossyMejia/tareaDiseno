@@ -7,7 +7,7 @@ package controller;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
+import modelo.Cliente;
 import modelo.Horario;
 import modelo.Instructor;
 import modelo.Servicio;
@@ -56,6 +56,9 @@ public class Controller {
     public ArrayList<Instructor> allInstructores(){
         return this.sala.controlInstructor.getInstructores();
     }
+    public ArrayList<Cliente> allClientes(){
+        return this.sala.controlCliente.getClientes();
+    }
     
     public ArrayList<Clase> allClaseMes(){
         return this.sala.listaControlClase.get( this.sala.listaControlClase.size()-1 ).getClases();
@@ -71,13 +74,4 @@ public class Controller {
     
     }
 
-
-    
-
-    
-
-    
-    
-    
-  
 }

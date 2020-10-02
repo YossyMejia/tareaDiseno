@@ -16,6 +16,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import modelo.Cliente;
 import modelo.Clase;
 import modelo.Horario;
 import modelo.Instructor;
@@ -255,23 +256,56 @@ public class SalaEntrenamiento {
             
         }
 
+        public static void main6(){
+            Scanner entrada = new Scanner(System.in);
+            String cedula;
+            int opcionClase;
+            boolean esCliente=false;
 
+            int x=0;
+            boolean iter=true;
+          //ArrayList<Servicio> servicio;
+            System.out.println("----- Menú de reserva de espacio para una clase -----"+"\n");
+            System.out.println("Por favor ingrese su cédula para poder solicitar un espacio en las clases:");
+            cedula= entrada.nextLine();
+            Cliente cliente=null;
+            for (int i=0;i<control.allClientes().size();i++){
+                if(control.allClientes().get(i).getCedula()==cedula) {
+                    cliente=control.allClientes().get(i);
+                    esCliente=true;
+                }
+            }
+            if (esCliente) {
+                int secuenciaClases=1;
+                System.out.println("Esta es la lista de posibles clases a matricular: ");
+                ArrayList<Clase> clases=control.allClases();
+                for (int i=0;i<clases.size();i++){
+                    System.out.println("------------------------------------------------------------------");
+                    System.out.println("Identificador de la clase: "+secuenciaClases);
+                    System.out.println("Nombre de la clase: "+clases.get(i).getServicio().getDescripcion()+"\n");
+                    System.out.println("Instructor: "+clases.get(i).getInstructor().getNombre()+"\n");
+                    System.out.println("La clase se imparte el día: "+clases.get(i).getHorario().getDia()+"\n");
+                    System.out.println("Hora de inicio: "+clases.get(i).getHorario().getHoraInicio()+"\n");
+                    System.out.println("Hora de finalización: "+clases.get(i).getHorario().getHoraFinal()+"\n");
+                    System.out.println("------------------------------------------------------------------");
+                    System.out.println("\n\n");
+                    secuenciaClases++;
+                }
+                System.out.println("Ingrese el número de identificador de la clase que desea matricular "+"\n");
+                opcionClase=Integer.parseInt(entrada.nextLine())-1;
+                if (opcionClase >= secuenciaClases) {
+                    System.out.println("El identificador no pertenece a ningúna de nuestras clases, por favor verifique que sea un identificador válido");
+                } else {
+                    control.allClases().get(opcionClase).addCliente(cliente);
+                    System.out.println("Usted se ha matriculado correctamente en la clase con el identificador: "+opcionClase+1+"\n");                
+                }
+            }
+            else System.out.println("Su cédula no se encuentra registrada en el sistema, por favor ingrese una cédula válida para poder reservar un espacio en las clases");
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-        
     public static  void main(String[] args) {
-
+        //main6();
+        menu1();
         System.out.println("dasd");
         
     }
