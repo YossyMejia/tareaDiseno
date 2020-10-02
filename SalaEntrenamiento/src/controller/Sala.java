@@ -44,10 +44,10 @@ public class Sala {
         controlServicio=new ControlServicio();
         montoMatricula=pMontoMatricula;
         controlInstructor=new ControlInstructor();
-        controlClase= new ArrayList<ControlClase>();
+        listaControlClase= new ArrayList<ControlClase>();
         controlCliente=new ControlCliente();
         this.horario=pHorario;
-        controlClase.add(new ControlClase());
+        listaControlClase.add(new ControlClase());
         mesActual= LocalDate.now().getMonth();
     }
 

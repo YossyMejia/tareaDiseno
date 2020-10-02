@@ -13,16 +13,14 @@ import java.time.LocalTime;
  * @author admin
  */
 
-enum Dia{
-    LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO;
-}
+
 
 public class Horario {
-    private Dia dia;
+    String dia;
     private LocalTime horaInicio;
     private LocalTime horaFinal;
     
-    public Horario(Dia pDia, LocalTime pHoraInicio, LocalTime pHoraFinal){
+    public Horario(String pDia, LocalTime pHoraInicio, LocalTime pHoraFinal){
         dia=pDia;
         horaInicio=pHoraInicio;
         horaFinal=pHoraFinal;
@@ -33,11 +31,11 @@ public class Horario {
         this.horaFinal=pHoraFinal;
     }
 
-    public Dia getDia() {
+    public String getDia() {
         return dia;
     }
 
-    public void setDia(Dia dia) {
+    public void setDia(String  dia) {
         this.dia = dia;
     }
 

@@ -26,6 +26,10 @@ import modelo.Servicio;
     enum Estado{
     TEMPORAL, FIJO, INVITADO;
 }
+
+enum Dia{
+    LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO;
+}
 public class SalaEntrenamiento {
     public static Controller control;//la variable que contiene el controlador, la cual a su vez contiene la sala
     
@@ -149,7 +153,7 @@ public class SalaEntrenamiento {
         }
         
         public static void menu5(){
-            String horaInicio,horaFinal,dia;
+            String xhoraInicio,yhoraFinal,dia;
             int numServicio, capacidad;
             Scanner entrada = new Scanner(System.in);
             int num=0;
@@ -165,10 +169,19 @@ public class SalaEntrenamiento {
             Instructor instructor = lista.get(num);
             System.out.println("Calendario Actual");
             calendario();
+            
+            System.out.println("Ingrese el numero que corresponda al dia en el que desesa crear la clase");
+            int a=1;
+            for (Dia day:Dia.values()){
+                System.out.print(a);
+                System.out.println(". "+day);
+            }
+            int opcion = entrada.nextInt();
+            dia= Dia.values()[opcion].name();
             System.out.println("Ingrese la Hora de Inicio");
-            horaInicio= entrada.nextLine();
+            xhoraInicio= entrada.nextLine();
             System.out.println("Ingrese la Hora de Finalizacion");
-            horaFinal= entrada.nextLine();
+            yhoraFinal= entrada.nextLine();
             System.out.println("Ingrese la Capacidad maxima de Clientes en la clase");
             capacidad= entrada.nextInt();
             
@@ -178,13 +191,20 @@ public class SalaEntrenamiento {
             }
             System.out.println("Ingrese el digito que representa el servicio que desea impartir ");
             numServicio= entrada.nextInt();
-            
-            
-            control.nuevaClase(capacidad,horaInicio,horaFinal,instructor ,instructor.getServicios().get(numServicio),);
+            String[] arrayInicio = xhoraInicio.split(":", 2);//se parsea la hora para convertirlo a formato localTIme
+            int horaI = Integer.parseInt(arrayInicio[0]);
+            int minutosI = Integer.parseInt(arrayInicio[1]);
+            LocalTime horaInicio = LocalTime.of(horaI, minutosI);
+           
+            String[] arrayFinal = yhoraFinal.split(":", 2);
+
+            int horaF = Integer.parseInt(arrayFinal[0]);
+            int minutosF = Integer.parseInt(arrayFinal[1]);
+            LocalTime horaFinal = LocalTime.of(horaF, minutosF);
+            control.nuevaClase(capacidad,dia,horaInicio,horaFinal,instructor ,instructor.getServicios().get(numServicio));
             
         }
-    
-        
+
     public static  void main(String[] args) {
 
         System.out.println("dasd");

@@ -60,9 +60,16 @@ public class Controller {
         return this.sala.listaControlClase.get( this.sala.listaControlClase.size()-1 ).getClases();
     }
     
-    
-    public void nuevaClase(int pCapacidad,LocalTime horaInicio,LocalTime horaFinal, Instructor pInstructor, Servicio pServicio){
-        this.sala.listaControlClase.get( this.sala.listaControlClase.size()-1 ).postClase( pCapacidad,horaInicio,horaFinal,pInstructor,pServicio);
+    /**
+     * 
+     * @param pCapacidad
+     * @param horaInicio
+     * @param horaFinal
+     * @param pInstructor
+     * @param pServicio 
+     */
+    public void nuevaClase(int pCapacidad,String dia,LocalTime horaInicio,LocalTime horaFinal, Instructor pInstructor, Servicio pServicio){
+        this.sala.listaControlClase.get( this.sala.listaControlClase.size()-1 ).postClase( pCapacidad,dia,horaInicio,horaFinal,pInstructor,pServicio);
         
     }
 

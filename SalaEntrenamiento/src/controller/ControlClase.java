@@ -34,10 +34,10 @@ public class ControlClase {
         return clases;
     }
     
-    public void postClase(int pCapacidad,LocalTime horaInicio,LocalTime horaFinal ,Instructor pInstructor, Servicio pServicio) {
-        Horario h = new Horario();
-        Clase c = new Clase(pCapacidad, pHorario, pInstructor,pServicio);
-        clases.add(pClase);
+    public void postClase(int pCapacidad,String pDia,LocalTime pHoraInicio,LocalTime pHoraFinal ,Instructor pInstructor, Servicio pServicio) {
+        Horario h = new Horario(pDia,pHoraInicio,pHoraFinal);
+        Clase c = new Clase(pCapacidad, h, pInstructor,pServicio);
+        clases.add(c);
     }
     
     public void reservarClase(Cliente pCliente, Clase pClase ) {
