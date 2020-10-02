@@ -68,7 +68,7 @@ public class Controller {
     
     public void nuevaClase(int pCapacidad,String dia,LocalTime horaInicio,LocalTime horaFinal, Instructor pInstructor, Servicio pServicio){
         this.sala.listaControlClase.get( this.sala.listaControlClase.size()-1 ).postClase( pCapacidad,dia,horaInicio,horaFinal,pInstructor,pServicio);
-        
+    
     }
 
 

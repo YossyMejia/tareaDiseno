@@ -154,11 +154,10 @@ public class SalaEntrenamiento {
                 System.out.println(listita.get(c).getHorario().getHoraFinal());
             }
         }
-            String[] arrayFinal = yhoraFinal.split(":", 2);
+            
         
         public static void main4(){
             System.out.println("----- Matricular cliente -----"+"\n");
-            ControlCliente cCliente = new ControlCliente();
             
             //Ingresar los datos de la persona
             Scanner entrada = new Scanner(System.in);
@@ -174,12 +173,10 @@ public class SalaEntrenamiento {
             System.out.println("Ingrese su correo");
             correo= entrada.nextLine();
             System.out.println("Ingrese su contrasena");
-            passw= entrada.nextLine();
-            
+            passw= entrada.nextLine(); 
             //Fecha de pago de la mensualidad
-            cCliente.pagar(cedula);
             Date now = new Date();
-                        control.cCliente.postCliente(nombre, apellido, cedula, telefono, correo, passw, now, now);
+            control.createClient(nombre, apellido, cedula, telefono, correo, passw, now, now);
         }
         
         public static void menu5(){
@@ -237,7 +234,7 @@ public class SalaEntrenamiento {
         
         public static void main7(){
             System.out.println("----- Ver Información de clase -----"+"\n");
-            ArrayList Classes = control.allClasses();
+            ArrayList Classes = control.allClaseMes();
             
             //Mostrando las clases disponibles
             Iterator it = Classes.iterator();
