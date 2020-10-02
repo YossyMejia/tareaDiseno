@@ -60,10 +60,10 @@ public class SalaEntrenamiento {
 //            
 //        }
     public static void crearSala() {
-        
+
         Scanner entrada = new Scanner(System.in);
         String nombre;
-        int  horaApertura, minutoApertura;
+        int horaApertura, minutoApertura;
         int horaCierre, minutoCierre;
         double costoMatricula;
         double mensualidad;
@@ -72,19 +72,19 @@ public class SalaEntrenamiento {
         System.out.println("-----Configuracion de Sala-----" + "\n");
         System.out.println("Ingrese el nombre de la Sala ");
         nombre = entrada.nextLine();
-        
+
         System.out.println("Ingrese Hora de Apertura formato 24H");
         minutoApertura = entrada.nextInt();
-        
+
         System.out.println("Ingrese el minuto de apertura");
         horaApertura = entrada.nextInt();
-        
+
         System.out.println("Ingrese Hora de Cierre formato 24H");
         horaCierre = entrada.nextInt();
-        
+
         System.out.println("Ingrese Minuto de Cierre");
         minutoCierre = entrada.nextInt();
-        
+
         System.out.println("Ingrese el costo de la matricula");
         costoMatricula = entrada.nextDouble();
         System.out.println("Ingrese el costo de la mensualidad");
@@ -141,16 +141,17 @@ public class SalaEntrenamiento {
         passw = entrada.nextLine();
         ArrayList<Servicio> listaServicios = control.allServicios();
         ArrayList<Servicio> serviciosInstructor = new ArrayList<Servicio>();
-        while (iter = true) {
+        while (iter == true) {
             for (int i = 0; i < listaServicios.size(); i++) {// imprime todos los servicios 
                 System.out.println(Integer.toString(i) + ". " + listaServicios.get(i).getNombreEvento());
             }
+            x = entrada.nextInt();
             System.out.println("Escriba el numero del servicio que ofrece o -1 para Salir");
             if (x == -1) {
                 iter = false;
             } else {
-                x = entrada.nextInt();
-                if(x>0 && x<listaServicios.size()){
+
+                if (x > 0 && x < listaServicios.size()) {
                     serviciosInstructor.add(listaServicios.get(x));
                     System.out.println("Desea ingresar otra opcion");
                     System.out.println("1. Si");
@@ -165,7 +166,7 @@ public class SalaEntrenamiento {
                 }
             }
         }
-        control.nuevoInstructor(nombre, apellido, cedula, telefono, correo, passw, Estado.FIJO.name(), listaServicios);
+        control.nuevoInstructor(nombre, apellido, cedula, telefono, correo, passw, Estado.FIJO.name(), serviciosInstructor);
     }
 
     public static void allInstructores() {
@@ -174,7 +175,7 @@ public class SalaEntrenamiento {
             System.out.println(i + 1);
             System.out.println(lista.get(i).getNombre() + " " + lista.get(i).getApellido());
             System.out.println("Servicios: ");
-            for(int x=0; x<lista.get(i).getServicios().size();x++){
+            for (int x = 0; x < lista.get(i).getServicios().size(); x++) {
                 System.out.println(lista.get(i).getServicios().get(x).getNombreEvento());
             }
         }
@@ -222,12 +223,12 @@ public class SalaEntrenamiento {
         int num = 0;
         System.out.println("--- Programar Clase -----");
 
-        System.out.println("Por favor ingrese su cédula para poder solicitar un espacio en las clases:");
+        System.out.println("Por favor ingrese su cedila para programar una clase");
         cedula = entrada.nextLine();
 
         ArrayList<Instructor> lista = control.allInstructores();
         for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).getCedula() == cedula) {
+            if (lista.get(i).getCedula().equals(cedula)) {
                 isInstructor = true;
                 i = lista.size();
             }
@@ -279,26 +280,26 @@ public class SalaEntrenamiento {
         ArrayList<Clase> Classes = control.allClaseMes();
 
         //Mostrando las clases disponibles
-        for(int i=0; i<Classes.size(); i++){
-            Clase clase=Classes.get(i);
-            System.out.println("Clase #"+(i+1));
+        for (int i = 0; i < Classes.size(); i++) {
+            Clase clase = Classes.get(i);
+            System.out.println("Clase #" + (i + 1));
             System.out.println(clase.getServicio().getNombreEvento());
-            System.out.println(clase.getHorario().getHoraInicio()+"-->"+clase.getHorario().getHoraFinal());
+            System.out.println(clase.getHorario().getHoraInicio() + "-->" + clase.getHorario().getHoraFinal());
             System.out.println("----------------");
         }
 
         //Respuesta del usuario
         Scanner entrada = new Scanner(System.in);
         System.out.println("Ingrese el número de clase que desea visualizar: " + "\n");
-        int numClass = entrada.nextInt()-1;
-        
+        int numClass = entrada.nextInt() - 1;
+
         //Visualización de la información de la clase
-        System.out.println("Número identificador de la clase: "+Classes.get(numClass).getIdClase());
-        System.out.println("Capacidad: "+Classes.get(numClass).getCapacidad()+" personas");
-        System.out.println("Horario: "+Classes.get(numClass).getHorario().getHoraInicio()+"-->"+Classes.get(numClass).getHorario().getHoraFinal());
-        System.out.println("Instructor: "+Classes.get(numClass).getInstructor().getNombre()+" "+Classes.get(numClass).getInstructor().getApellido());
-        System.out.println("Servicio: "+Classes.get(numClass).getServicio().getNombreEvento());
-        System.out.println("Descripcion de Servicio: "+Classes.get(numClass).getServicio().getDescripcion());
+        System.out.println("Número identificador de la clase: " + Classes.get(numClass).getIdClase());
+        System.out.println("Capacidad: " + Classes.get(numClass).getCapacidad() + " personas");
+        System.out.println("Horario: " + Classes.get(numClass).getHorario().getHoraInicio() + "-->" + Classes.get(numClass).getHorario().getHoraFinal());
+        System.out.println("Instructor: " + Classes.get(numClass).getInstructor().getNombre() + " " + Classes.get(numClass).getInstructor().getApellido());
+        System.out.println("Servicio: " + Classes.get(numClass).getServicio().getNombreEvento());
+        System.out.println("Descripcion de Servicio: " + Classes.get(numClass).getServicio().getDescripcion());
         System.out.println();
     }
 
@@ -316,7 +317,7 @@ public class SalaEntrenamiento {
         cedula = entrada.nextLine();
         Cliente cliente = null;
         for (int i = 0; i < control.allClientes().size(); i++) {
-            if (control.allClientes().get(i).getCedula().equals(cedula) ) {
+            if (control.allClientes().get(i).getCedula().equals(cedula)) {
 //                System.out.println(control.allClientes().get(i).getCedula());
                 cliente = control.allClientes().get(i);
                 esCliente = true;
@@ -350,18 +351,18 @@ public class SalaEntrenamiento {
             System.out.println("Su cédula no se encuentra registrada en el sistema, por favor ingrese una cédula válida para poder reservar un espacio en las clases");
         }
     }
-    
-        public static void allClientes() {
+
+    public static void allClientes() {
         ArrayList<Cliente> lista = control.allClientes();
         for (int i = 0; i < lista.size(); i++) {
-            System.out.println("\nCliente #"+(i + 1));
+            System.out.println("\nCliente #" + (i + 1));
             System.out.println(lista.get(i).getNombre() + " " + lista.get(i).getApellido());
             System.out.println(lista.get(i).getCedula());
         }
 
     }
 
-    public static void completarDatos(){
+    public static void completarDatos() {
         //Crear servicios
         control.createServicio("Cxworx", "Se enfoca en trabajar principalmente la zona central del cuerpo, también llamado core. Se ejercitan los músculos del abdomen, oblicuos y espalda baja con trabajo de fuerza y tono, otros nombres no tan comerciales es core training");
         control.createServicio("Bosu", "Se pueden realizar ejercicios aeróbicos como caminar, correr, saltar; o se puede hacer ejercicios de fuerza, de tono, de abdomen, funcionales y de estabilidad encima del bosu. Es un entrenamiento basado en equilibrio y balance.");
@@ -373,51 +374,48 @@ public class SalaEntrenamiento {
         control.createServicio("Aerobox", "Esta actividad incluye movimientos de kickboxing mezclados con aerobics, por lo que se trata de una opción muy diferente. Mejora la resistencia física, el tono muscular, ayuda en la pérdida de grasa corporal.");
         control.createServicio("TaeBo", "Incrementa la resistencia cardiaca, la fuerza, la flexibilidad y ayuda en la perdida de grasa corporal. Si tienes gusto por las artes marciales sin contacto y quieres tener un buen entrenamiento cardiovascular al mismo tiempo esta es tu opción. ");
         control.createServicio("Zumba", "Es un una actividad en donde se combinan movimientos de baile con rutinas aeróbicas principalmente con música latina como salsa, merengue, cumbia, reggaetón y samba.");
-        
+
         //Crear Clientes
-        Date fecha= new Date();
-        control.createClient("Ruben", "Palma", "64286277", "63588868", "Ruben@gmail.com" , "78968136", fecha, fecha);
-        control.createClient("Rafael" , "Frances", "33323492", "63588868", "Rafael@gmail.com" , "78968136", fecha, fecha);
-        control.createClient("Santiago" , "Ye", "55223165", "63588868", "Santiago@gmail.com" , "78968136", fecha, fecha);
-        control.createClient("Carlos" , "Alberto" , "95854526", "63588868", "Carlos@gmail.com" , "78968136", fecha, fecha);
-        control.createClient("Segundo" , "Alcaraz", "92193077", "63588868", "Segundo@gmail.com" , "78968136", fecha, fecha);
-        control.createClient("Anna" , "Olmo", "94851247", "63588868", "Anna@gmail.com" , "78968136", fecha, fecha);
-        control.createClient("Sarai" , "Cervantes", "92507729", "63588868", "Sarai@gmail.com" , "78968136", fecha, fecha);
-        control.createClient("Maria" , "Salud", "53651750", "63588868", "Maria@gmail.com" , "78968136", fecha, fecha);
-        control.createClient("Iria" , "Arribas", "68194728", "63588868", "Iria@gmail.com" , "78968136", fecha, fecha);
-        
+        Date fecha = new Date();
+        control.createClient("Ruben", "Palma", "64286277", "63588868", "Ruben@gmail.com", "78968136", fecha, fecha);
+        control.createClient("Rafael", "Frances", "33323492", "63588868", "Rafael@gmail.com", "78968136", fecha, fecha);
+        control.createClient("Santiago", "Ye", "55223165", "63588868", "Santiago@gmail.com", "78968136", fecha, fecha);
+        control.createClient("Carlos", "Alberto", "95854526", "63588868", "Carlos@gmail.com", "78968136", fecha, fecha);
+        control.createClient("Segundo", "Alcaraz", "92193077", "63588868", "Segundo@gmail.com", "78968136", fecha, fecha);
+        control.createClient("Anna", "Olmo", "94851247", "63588868", "Anna@gmail.com", "78968136", fecha, fecha);
+        control.createClient("Sarai", "Cervantes", "92507729", "63588868", "Sarai@gmail.com", "78968136", fecha, fecha);
+        control.createClient("Maria", "Salud", "53651750", "63588868", "Maria@gmail.com", "78968136", fecha, fecha);
+        control.createClient("Iria", "Arribas", "68194728", "63588868", "Iria@gmail.com", "78968136", fecha, fecha);
+
         //Crear Instructores
         ArrayList<Servicio> servicios = new ArrayList<Servicio>();
 
         servicios.add(control.allServicios().get(0));
         servicios.add(control.allServicios().get(1));
-        control.nuevoInstructor("Oscar", "Segura", "109760070", "83679661", "mayecedeno@gmail.com", "maye1234", Estado.FIJO.toString(),servicios);
-        
+        control.nuevoInstructor("Oscar", "Segura", "109760070", "83679661", "mayecedeno@gmail.com", "maye1234", Estado.FIJO.toString(), servicios);
 
         servicios.clear();
         servicios.add(control.allServicios().get(2));
         servicios.add(control.allServicios().get(3));
-        control.nuevoInstructor("Melissa", "Fuentes", "109876534", "88238572", "melifuentes80@gmail.com", "meli1234", Estado.TEMPORAL.toString(),servicios);
+        control.nuevoInstructor("Melissa", "Fuentes", "109876534", "88238572", "melifuentes80@gmail.com", "meli1234", Estado.TEMPORAL.toString(), servicios);
 
         servicios.clear();
         servicios.add(control.allServicios().get(4));
         servicios.add(control.allServicios().get(5));
-        control.nuevoInstructor("César", "Milán", "102367128", "82348817", "encantadordeperros@gmail.com", "cesar1234", Estado.FIJO.toString(),servicios);
+        control.nuevoInstructor("César", "Milán", "102367128", "82348817", "encantadordeperros@gmail.com", "cesar1234", Estado.FIJO.toString(), servicios);
 
         servicios.clear();
         servicios.add(control.allServicios().get(6));
         servicios.add(control.allServicios().get(7));
-        control.nuevoInstructor("Jennifer", "Zamora", "105788345", "89908223", "jenni0987@gmail.com", "jenni1234", Estado.FIJO.toString(),servicios);
+        control.nuevoInstructor("Jennifer", "Zamora", "105788345", "89908223", "jenni0987@gmail.com", "jenni1234", Estado.FIJO.toString(), servicios);
 
         servicios.clear();
         servicios.add(control.allServicios().get(8));
         servicios.add(control.allServicios().get(9));
-        control.nuevoInstructor("Bryan", "Rodríguez", "106753456", "85983919", "bryan0104@gmail.com", "bryan1234", Estado.TEMPORAL.toString(),servicios);
+        control.nuevoInstructor("Bryan", "Rodríguez", "106753456", "85983919", "bryan0104@gmail.com", "bryan1234", Estado.TEMPORAL.toString(), servicios);
 
         servicios.clear();
-    
-        
-        
+
         //Crear Clases
         control.nuevaClase(15, "LUNES", LocalTime.of(7, 0), LocalTime.of(8, 0), control.allInstructores().get(0), control.allServicios().get(1));
         control.nuevaClase(15, "MARTES", LocalTime.of(8, 0), LocalTime.of(9, 0), control.allInstructores().get(1), control.allServicios().get(0));
@@ -427,37 +425,31 @@ public class SalaEntrenamiento {
         control.nuevaClase(15, "JUEVES", LocalTime.of(7, 0), LocalTime.of(8, 0), control.allInstructores().get(2), control.allServicios().get(7));
         control.nuevaClase(15, "MARTES", LocalTime.of(9, 0), LocalTime.of(10, 0), control.allInstructores().get(3), control.allServicios().get(9));
         control.nuevaClase(15, "LUNES", LocalTime.of(15, 0), LocalTime.of(17, 0), control.allInstructores().get(2), control.allServicios().get(2));
-        
-        
-        
-        
-        
+
     }
-    
+
     public static void main(String[] args) {
         control = new Controller();
-        
-        
+
         Scanner entrada = new Scanner(System.in);
-        int opcion=0;
+        int opcion = 0;
         System.out.println(" Bienvenido al Sistema De Gestion del Gimnasio ");
-        while(opcion!=11){
-        System.out.println(" ------ Menu Principal ------");
-        System.out.println(" 1. Crear Sala ");
-        System.out.println(" 2. Registro de Servicios ");
-        System.out.println(" 3. Ver todos los servicios ");
-        System.out.println(" 4. Registro de Instructores ");
-        System.out.println(" 5. Visualizacion de Instructores ");
-        System.out.println(" 6. Matricula de Cliente ");
-        System.out.println(" 7. Programar Clase ");
-        System.out.println(" 8. Reservar Clase ");
-        System.out.println(" 9. Ver Clase ");
-        System.out.println(" 10. Visualizacion de Clientes ");
-        System.out.println(" 11. Salir ");
-        
-        
-        opcion = entrada.nextInt();
-        
+        while (opcion != 11) {
+            System.out.println(" ------ Menu Principal ------");
+            System.out.println(" 1. Crear Sala ");
+            System.out.println(" 2. Registro de Servicios ");
+            System.out.println(" 3. Ver todos los servicios ");
+            System.out.println(" 4. Registro de Instructores ");
+            System.out.println(" 5. Visualizacion de Instructores ");
+            System.out.println(" 6. Matricula de Cliente ");
+            System.out.println(" 7. Programar Clase ");
+            System.out.println(" 8. Reservar Clase ");
+            System.out.println(" 9. Ver Clase ");
+            System.out.println(" 10. Visualizacion de Clientes ");
+            System.out.println(" 11. Salir ");
+
+            opcion = entrada.nextInt();
+
             switch (opcion) {
                 case 1:
                     crearSala();
@@ -481,7 +473,7 @@ public class SalaEntrenamiento {
                 case 7:
                     programarClase();
                     break;
-                case 8: 
+                case 8:
                     reservarClase();
                     break;
                 case 9:
@@ -495,8 +487,6 @@ public class SalaEntrenamiento {
 
             }
         }
-
-
 
     }
 

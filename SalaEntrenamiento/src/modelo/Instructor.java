@@ -1,7 +1,7 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+// * and open the template in the editor.
  */
 package modelo;
 
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class Instructor extends Persona{
     private String estado;
-    private ArrayList<Servicio> servicios = null;
+    private ArrayList<Servicio> servicios = new ArrayList<Servicio>();
 
 /**
  * 
@@ -32,10 +32,10 @@ public class Instructor extends Persona{
             String pEstado, ArrayList<Servicio> pServicios) {
         super(pNombre, pApellido, pCedula, pTelefono, pCorreo, pPassword);
         estado=pEstado;
-//        for(int i=0;i<pServicios.size();i++){
-//            servicios.add(pServicios.get(i));
-//        }
-        servicios=pServicios;
+        for(int i=0;i<pServicios.size();i++){
+            servicios.add(pServicios.get(i));
+        }
+
     }
 
 
