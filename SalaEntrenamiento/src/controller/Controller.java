@@ -6,8 +6,11 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import modelo.Horario;
 import modelo.Servicio;
+import modelo.Clase;
+
 
 /**
  *
@@ -33,6 +36,16 @@ public class Controller {
     public ArrayList<Servicio> allServicios(){
         return this.sala.controlServicio.getServicios();
     }
+    
+    public ArrayList<Clase> allClasses(){
+        return this.sala.controlClase.getClases();
+    }
+    
+    public void createClient(String pNombre, String pApellido, String pCedula, String pTelefono, String pCorreo, String pPassword,
+            Date pMatricula, Date pUltimoPago){
+        this.sala.controlCliente.postCliente(pNombre, pApellido, pCedula, pTelefono, pCorreo, pPassword,pMatricula, pUltimoPago);
+    }
+
     
     
     

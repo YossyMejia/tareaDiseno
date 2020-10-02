@@ -31,17 +31,17 @@ public class ControlInstructor {
         this.instructor.add(instructor);
     }
     
-    public ArrayList<Instructor> getInstructores(){
-        //Tomar el arreglo de instructores
-        this.instructor.add();
-        return this.instructor;
-    }
-    
-    public arrayList<Instructor> getServiciosInstructor(){
-        //Tomar el arreglo de la clase instructor
-        return instructor;
-    }
-    
+//    public ArrayList<Instructor> getInstructores(){
+//        //Tomar el arreglo de instructores
+//        this.instructor.add();
+//        return this.instructor;
+//    }
+//    
+//    public arrayList<Instructor> getServiciosInstructor(){
+//        //Tomar el arreglo de la clase instructor
+//        return instructor;
+//    }
+//    
     public boolean postServiciosInstructor(int key){
         
     }

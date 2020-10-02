@@ -20,9 +20,15 @@ public class ControlCliente {
         return clientes;
     }
     
-    public void postCliente(Cliente cliente) {
-        clientes.add(cliente);
+    public void postCliente(String pNombre, String pApellido, String pCedula, String pTelefono, String pCorreo, String pPassword,
+            Date pMatricula, Date pUltimoPago) {
+        
+        clientes.add(new Cliente(pNombre, pApellido, pCedula, pTelefono, pCorreo, pPassword,pMatricula, pUltimoPago));
     }
+//    public void postCliente(String pNombre, String pApellido, String pCedula, String pTelefono, String pCorreo, String pPassword,
+//            Date pMatricula, Date pUltimoPago){
+//        this.C
+//    }
     
     public void pagar(String cedula) {
         for (int i=0;i<clientes.size();i++){
@@ -39,4 +45,6 @@ public class ControlCliente {
             if(clientes.get(i).getCedula() == cedula) clientes.get(i).setEstado();  //En la clase cliente debería haber un procedimiento que calcule el nuevo estado a partir de la última fecha de pago y el mes actual
         }
     }   
+
+  
 }

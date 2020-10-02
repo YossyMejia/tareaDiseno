@@ -16,7 +16,7 @@ enum Estado{
 }
 
 public class Instructor extends Persona{
-    private Estado estado;
+    public Estado estado;
     private ArrayList<Servicio> servicios;
 /**
  * 
@@ -36,9 +36,9 @@ public class Instructor extends Persona{
         servicios=pServicios;
     }
 
-    public Instructor() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    public Instructor() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
 
     public Estado getEstado() {
