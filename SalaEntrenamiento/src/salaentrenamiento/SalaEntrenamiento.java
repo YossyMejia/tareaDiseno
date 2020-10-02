@@ -278,7 +278,7 @@ public class SalaEntrenamiento {
             if (esCliente) {
                 int secuenciaClases=1;
                 System.out.println("Esta es la lista de posibles clases a matricular: ");
-                ArrayList<Clase> clases=control.allClases();
+                ArrayList<Clase> clases=control.allClaseMes();
                 for (int i=0;i<clases.size();i++){
                     System.out.println("------------------------------------------------------------------");
                     System.out.println("Identificador de la clase: "+secuenciaClases);
@@ -292,11 +292,11 @@ public class SalaEntrenamiento {
                     secuenciaClases++;
                 }
                 System.out.println("Ingrese el número de identificador de la clase que desea matricular "+"\n");
-                opcionClase=Integer.parseInt(entrada.nextLine())-1;
+                opcionClase=entrada.nextInt()-1;
                 if (opcionClase >= secuenciaClases) {
                     System.out.println("El identificador no pertenece a ningúna de nuestras clases, por favor verifique que sea un identificador válido");
                 } else {
-                    control.allClases().get(opcionClase).addCliente(cliente);
+                    control.reservarEspacio(cedula,clases.get(opcionClase).getIdClase());
                     System.out.println("Usted se ha matriculado correctamente en la clase con el identificador: "+opcionClase+1+"\n");                
                 }
             }

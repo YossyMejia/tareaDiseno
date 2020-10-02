@@ -21,6 +21,16 @@ public class ControlCliente {
         return clientes;
     }
     
+    public Cliente getCliente(String pId){
+        for(Cliente c: getClientes()){
+            if(c.getCedula().equals(pId)){
+                return c;
+            }
+           
+        }
+        return null;
+    }
+    
     public void postCliente(String pNombre, String pApellido, String pCedula, String pTelefono, String pCorreo, String pPassword,
             Date pMatricula, Date pUltimoPago) {
         

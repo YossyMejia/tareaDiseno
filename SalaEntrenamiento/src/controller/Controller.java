@@ -7,6 +7,7 @@ package controller;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import modelo.Cliente;
 import modelo.Horario;
 import modelo.Instructor;
@@ -63,8 +64,7 @@ public class Controller {
     public ArrayList<Clase> allClaseMes(){
         return this.sala.listaControlClase.get( this.sala.listaControlClase.size()-1 ).getClases();
     }
-    public void createClient(String pNombre, String pApellido, String pCedula, String pTelefono, String pCorreo, String pPassword,
-            Date pMatricula, Date pUltimoPago){
+    public void createClient(String pNombre, String pApellido, String pCedula, String pTelefono, String pCorreo, String pPassword,Date pMatricula, Date pUltimoPago){
         this.sala.controlCliente.postCliente(pNombre, pApellido, pCedula, pTelefono, pCorreo, pPassword,pMatricula, pUltimoPago);
     }
 
@@ -72,6 +72,10 @@ public class Controller {
     public void nuevaClase(int pCapacidad,String dia,LocalTime horaInicio,LocalTime horaFinal, Instructor pInstructor, Servicio pServicio){
         this.sala.listaControlClase.get( this.sala.listaControlClase.size()-1 ).postClase( pCapacidad,dia,horaInicio,horaFinal,pInstructor,pServicio);
     
+    }
+    
+    public void reservarEspacio(String pIdentificador,int pIdClase){
+        this.sala.listaControlClase.get( this.sala.listaControlClase.size()-1 ).getClase(pIdClase).addCliente(this.sala.controlCliente.getCliente(pIdentificador));
     }
 
 }
