@@ -20,13 +20,22 @@ public class Cliente extends Persona{
     private Date matricula;
     private Date ultimoPago;
     
+    
     public Cliente (String pNombre, String pApellido, String pCedula, String pTelefono, String pCorreo, String pPassword,
-            EstadoCliente pEstado, Date pMatricula, Date pUltimoPago){
+            Date pMatricula, Date pUltimoPago){
         super(pNombre, pApellido, pCedula, pTelefono, pCorreo, pPassword);
-        estado=pEstado;
         matricula=pMatricula;
         ultimoPago=pUltimoPago;
     }
+    
+//    public Cliente (String pNombre, String pApellido, String pCedula, String pTelefono, String pCorreo, String pPassword,
+//            EstadoCliente pEstado, Date pMatricula, Date pUltimoPago){
+//        super(pNombre, pApellido, pCedula, pTelefono, pCorreo, pPassword);
+//        estado=pEstado;
+//        matricula=pMatricula;
+//        ultimoPago=pUltimoPago;
+//    }
+    
 
     public EstadoCliente getEstado() {
         return estado;

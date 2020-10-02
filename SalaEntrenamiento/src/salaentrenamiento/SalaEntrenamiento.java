@@ -11,8 +11,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 import controller.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import modelo.Clase;
 import modelo.Horario;
 import modelo.Instructor;
@@ -151,6 +154,33 @@ public class SalaEntrenamiento {
                 System.out.println(listita.get(c).getHorario().getHoraFinal());
             }
         }
+            String[] arrayFinal = yhoraFinal.split(":", 2);
+        
+        public static void main4(){
+            System.out.println("----- Matricular cliente -----"+"\n");
+            ControlCliente cCliente = new ControlCliente();
+            
+            //Ingresar los datos de la persona
+            Scanner entrada = new Scanner(System.in);
+            String nombre,apellido,cedula,telefono,correo,passw;
+            System.out.println("Ingrese su nombre");
+            nombre= entrada.nextLine();
+            System.out.println("Ingrese su apellido");
+            apellido= entrada.nextLine();
+            System.out.println("Ingrese su cedula");
+            cedula= entrada.nextLine();
+            System.out.println("Ingrese su telefono. Formato: ####-####");
+            telefono= entrada.nextLine();
+            System.out.println("Ingrese su correo");
+            correo= entrada.nextLine();
+            System.out.println("Ingrese su contrasena");
+            passw= entrada.nextLine();
+            
+            //Fecha de pago de la mensualidad
+            cCliente.pagar(cedula);
+            Date now = new Date();
+                        control.cCliente.postCliente(nombre, apellido, cedula, telefono, correo, passw, now, now);
+        }
         
         public static void menu5(){
             String xhoraInicio,yhoraFinal,dia;
@@ -197,14 +227,52 @@ public class SalaEntrenamiento {
             LocalTime horaInicio = LocalTime.of(horaI, minutosI);
            
             String[] arrayFinal = yhoraFinal.split(":", 2);
-
             int horaF = Integer.parseInt(arrayFinal[0]);
             int minutosF = Integer.parseInt(arrayFinal[1]);
             LocalTime horaFinal = LocalTime.of(horaF, minutosF);
             control.nuevaClase(capacidad,dia,horaInicio,horaFinal,instructor ,instructor.getServicios().get(numServicio));
             
         }
+            
+        
+        public static void main7(){
+            System.out.println("----- Ver Información de clase -----"+"\n");
+            ArrayList Classes = control.allClasses();
+            
+            //Mostrando las clases disponibles
+            Iterator it = Classes.iterator();
+            int cont=1;
+            while(it.hasNext()){
+                System.out.println(cont+"-->"+it.next());
+                cont++;
+            }
+            
+            //Respuesta del usuario
+            Scanner entrada = new Scanner(System.in);
+            System.out.println("Ingrese el número de clase que desea visualizar: "+"\n");
+            String numClassS= entrada.nextLine();
+            int numClass=Integer.parseInt(numClassS);
+            
+            //Visualización de la información de la clase
+            System.out.println(Classes.get(numClass));
+            
+        }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     public static  void main(String[] args) {
 
         System.out.println("dasd");

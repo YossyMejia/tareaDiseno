@@ -7,11 +7,12 @@ package controller;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
-import modelo.Clase;
-
+import java.util.Date;
 import modelo.Horario;
 import modelo.Instructor;
 import modelo.Servicio;
+import modelo.Clase;
+
 
 /**
  *
@@ -59,15 +60,12 @@ public class Controller {
     public ArrayList<Clase> allClaseMes(){
         return this.sala.listaControlClase.get( this.sala.listaControlClase.size()-1 ).getClases();
     }
+    public void createClient(String pNombre, String pApellido, String pCedula, String pTelefono, String pCorreo, String pPassword,
+            Date pMatricula, Date pUltimoPago){
+        this.sala.controlCliente.postCliente(pNombre, pApellido, pCedula, pTelefono, pCorreo, pPassword,pMatricula, pUltimoPago);
+    }
+
     
-    /**
-     * 
-     * @param pCapacidad
-     * @param horaInicio
-     * @param horaFinal
-     * @param pInstructor
-     * @param pServicio 
-     */
     public void nuevaClase(int pCapacidad,String dia,LocalTime horaInicio,LocalTime horaFinal, Instructor pInstructor, Servicio pServicio){
         this.sala.listaControlClase.get( this.sala.listaControlClase.size()-1 ).postClase( pCapacidad,dia,horaInicio,horaFinal,pInstructor,pServicio);
         
