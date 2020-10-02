@@ -8,13 +8,14 @@ package controller;
 import java.util.ArrayList;
 import java.util.Date;
 import modelo.Cliente;
+import static salaentrenamiento.SalaEntrenamiento.main6;
 
 /**
  *
  * @author Steven
  */
 public class ControlCliente {
-    private ArrayList<Cliente> clientes=new ArrayList<Cliente>();
+    private static ArrayList<Cliente> clientes=new ArrayList<Cliente>();
 
     public ArrayList<Cliente> getClientes() {
         return clientes;

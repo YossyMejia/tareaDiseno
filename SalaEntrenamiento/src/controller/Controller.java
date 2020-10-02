@@ -6,6 +6,8 @@
 package controller;
 
 import java.util.ArrayList;
+import modelo.Clase;
+import modelo.Cliente;
 import modelo.Horario;
 import modelo.Servicio;
 
@@ -34,13 +36,12 @@ public class Controller {
         return this.sala.controlServicio.getServicios();
     }
     
+    public ArrayList<Cliente> allClientes(){
+        return this.sala.controlCliente.getClientes();
+    }
     
+    public ArrayList<Clase> allClases() {
+        return this.sala.controlClase.getClases();
+    }
     
-
-    
-
-    
-    
-    
-  
 }
