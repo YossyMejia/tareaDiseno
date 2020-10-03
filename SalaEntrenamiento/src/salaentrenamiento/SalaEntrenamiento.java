@@ -223,20 +223,21 @@ public class SalaEntrenamiento {
         int num = 0;
         System.out.println("--- Programar Clase -----");
 
-        System.out.println("Por favor ingrese su cedila para programar una clase");
+        System.out.println("Por favor ingrese su cedula para programar una clase");
         cedula = entrada.nextLine();
-
+        Instructor instructor = null;
         ArrayList<Instructor> lista = control.allInstructores();
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).getCedula().equals(cedula)) {
                 isInstructor = true;
-                i = lista.size();
+                instructor= lista.get(i);
+                System.out.println(lista.get(i).getCedula()+ " "+ cedula);
             }
         }
         if (isInstructor) {
-            System.out.println("Escriba el digito perteneciente a su nombre");
-            num = entrada.nextInt();
-            Instructor instructor = lista.get(num);
+            //System.out.println("Escriba el digito perteneciente a su nombre");
+            //num = entrada.nextInt();
+            //Instructor instructor = lista.get(num);
             System.out.println("Calendario Actual");
             calendario();
             System.out.println("Ingrese el numero que corresponda al dia en el que desesa crear la clase");
@@ -244,6 +245,7 @@ public class SalaEntrenamiento {
             for (Dia day : Dia.values()) {
                 System.out.print(a);
                 System.out.println(". " + day);
+                a++;
             }
             int opcion = entrada.nextInt();
             dia = Dia.values()[opcion].name();
