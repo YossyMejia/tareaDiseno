@@ -188,7 +188,7 @@ public class SalaEntrenamiento {
             System.out.println(listita.get(c).getServicio().getNombreEvento());
             System.out.println(listita.get(c).getHorario().getDia());
             System.out.println(listita.get(c).getHorario().getHoraInicio());
-            System.out.println(listita.get(c).getHorario().getHoraFinal());
+            System.out.println(listita.get(c).getHorario().getHoraFinal()+"\n");
         }
     }
 
@@ -250,6 +250,8 @@ public class SalaEntrenamiento {
             int opcion = entrada.nextInt();
             dia = Dia.values()[opcion].name();
             System.out.println("Ingrese la Hora de Inicio");
+            String x = entrada.nextLine();
+            System.out.println("Presione Enter para Continuar");
             xhoraInicio = entrada.nextLine();
             System.out.println("Ingrese la Hora de Finalizacion");
             yhoraFinal = entrada.nextLine();
@@ -270,7 +272,7 @@ public class SalaEntrenamiento {
             int horaF = Integer.parseInt(arrayFinal[0]);
             int minutosF = Integer.parseInt(arrayFinal[1]);
             LocalTime horaFinal = LocalTime.of(horaF, minutosF);
-            control.nuevaClase(capacidad, dia, horaInicio, horaFinal, instructor, instructor.getServicios().get(numServicio));
+            control.nuevaClase(capacidad, dia, horaInicio, horaFinal, instructor, instructor.getServicios().get(numServicio-1));
         } else {
             System.out.println("Su cédula no se encuentra registrada en el sistema, por favor ingrese una cédula válida para poder programar una clase");
         }
@@ -333,12 +335,12 @@ public class SalaEntrenamiento {
                 System.out.println("------------------------------------------------------------------");
                 System.out.println("Identificador de la clase: " + secuenciaClases);
                 System.out.println("Nombre de la clase: " + clases.get(i).getServicio().getNombreEvento() + "\n");
-                System.out.println("Instructor: " + clases.get(i).getInstructor().getNombre() + "\n");
+                System.out.println("Instructor: " + clases.get(i).getInstructor().getNombre());
                 System.out.println("La clase se imparte el día: " + clases.get(i).getHorario().getDia() + "\n");
-                System.out.println("Hora de inicio: " + clases.get(i).getHorario().getHoraInicio() + "\n");
+                System.out.println("Hora de inicio: " + clases.get(i).getHorario().getHoraInicio() );
                 System.out.println("Hora de finalización: " + clases.get(i).getHorario().getHoraFinal() + "\n");
                 System.out.println("------------------------------------------------------------------");
-                System.out.println("\n\n");
+                //System.out.println("\n\n");
                 secuenciaClases++;
             }
             System.out.println("Ingrese el número de identificador de la clase que desea matricular " + "\n");
@@ -347,7 +349,7 @@ public class SalaEntrenamiento {
                 System.out.println("El identificador no pertenece a ningúna de nuestras clases, por favor verifique que sea un identificador válido");
             } else {
                 control.reservarEspacio(cedula, clases.get(opcionClase).getIdClase());
-                System.out.println("Usted se ha matriculado correctamente en la clase con el identificador: " + opcionClase + 1 + "\n");
+                System.out.println("Usted se ha matriculado correctamente en la clase con el identificador: " + Integer.toString(opcionClase + 1) + "\n");
             }
         } else {
             System.out.println("Su cédula no se encuentra registrada en el sistema, por favor ingrese una cédula válida para poder reservar un espacio en las clases");
