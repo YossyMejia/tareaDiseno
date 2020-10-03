@@ -144,20 +144,24 @@ public class SalaEntrenamiento {
         while (iter = true) {
             for (int i = 0; i < listaServicios.size(); i++) {// imprime todos los servicios 
                 System.out.println(Integer.toString(i) + ". " + listaServicios.get(i).getNombreEvento());
-                System.out.println("Escriba el numero del servicio que ofrece o -1 para Salir");
-                if (x == -1) {
-                    iter = false;
-                } else {
-                    x = entrada.nextInt();
+            }
+            System.out.println("Escriba el numero del servicio que ofrece o -1 para Salir");
+            if (x == -1) {
+                iter = false;
+            } else {
+                x = entrada.nextInt();
+                if(x>0 && x<listaServicios.size()){
                     serviciosInstructor.add(listaServicios.get(x));
                     System.out.println("Desea ingresar otra opcion");
                     System.out.println("1. Si");
                     System.out.println("2. No");
                     System.out.println("digite una opcion");
                     x = entrada.nextInt();
-                    if (x != 1) {
-                        iter = false;
-                    }
+
+                }
+
+                if (x != 1) {
+                    iter = false;
                 }
             }
         }
@@ -170,7 +174,7 @@ public class SalaEntrenamiento {
             System.out.println(i + 1);
             System.out.println(lista.get(i).getNombre() + " " + lista.get(i).getApellido());
             System.out.println("Servicios: ");
-            for (int x = 0; x < lista.get(i).getServicios().size(); x++) {
+            for(int x=0; x<lista.get(i).getServicios().size();x++){
                 System.out.println(lista.get(i).getServicios().get(x).getNombreEvento());
             }
         }
@@ -211,72 +215,91 @@ public class SalaEntrenamiento {
     }
 
     public static void programarClase() {
-        String xhoraInicio, yhoraFinal, dia;
+        String xhoraInicio, yhoraFinal, dia, cedula;
+        boolean isInstructor = false;
         int numServicio, capacidad;
         Scanner entrada = new Scanner(System.in);
         int num = 0;
         System.out.println("--- Programar Clase -----");
+
+        System.out.println("Por favor ingrese su cédula para poder solicitar un espacio en las clases:");
+        cedula = entrada.nextLine();
+
         ArrayList<Instructor> lista = control.allInstructores();
         for (int i = 0; i < lista.size(); i++) {
-            System.out.println(i);
-            System.out.println(lista.get(i).getNombre() + " " + lista.get(i).getApellido());
+            if (lista.get(i).getCedula() == cedula) {
+                isInstructor = true;
+                i = lista.size();
+            }
         }
-        System.out.println("Escriba el digito perteneciente a su nombre");
-        num = entrada.nextInt();
-        Instructor instructor = lista.get(num);
-        System.out.println("Calendario Actual");
-        calendario();
-        System.out.println("Ingrese el numero que corresponda al dia en el que desesa crear la clase");
-        int a = 1;
-        for (Dia day : Dia.values()) {
-            System.out.print(a);
-            System.out.println(". " + day);
-        }
-        int opcion = entrada.nextInt();
-        dia = Dia.values()[opcion].name();
-        System.out.println("Ingrese la Hora de Inicio");
-        xhoraInicio = entrada.nextLine();
-        System.out.println("Ingrese la Hora de Finalizacion");
-        yhoraFinal = entrada.nextLine();
-        System.out.println("Ingrese la Capacidad maxima de Clientes en la clase");
-        capacidad = entrada.nextInt();
-        for (int w = 0; w < instructor.getServicios().size(); w++) {
-            System.out.print(w + 1);
-            System.out.println(". " + instructor.getServicios().get(w).getNombreEvento());
-        }
-        System.out.println("Ingrese el digito que representa el servicio que desea impartir ");
-        numServicio = entrada.nextInt();
-        String[] arrayInicio = xhoraInicio.split(":", 2);//se parsea la hora para convertirlo a formato localTIme
-        int horaI = Integer.parseInt(arrayInicio[0]);
-        int minutosI = Integer.parseInt(arrayInicio[1]);
-        LocalTime horaInicio = LocalTime.of(horaI, minutosI);
+        if (isInstructor) {
+            System.out.println("Escriba el digito perteneciente a su nombre");
+            num = entrada.nextInt();
+            Instructor instructor = lista.get(num);
+            System.out.println("Calendario Actual");
+            calendario();
+            System.out.println("Ingrese el numero que corresponda al dia en el que desesa crear la clase");
+            int a = 1;
+            for (Dia day : Dia.values()) {
+                System.out.print(a);
+                System.out.println(". " + day);
+            }
+            int opcion = entrada.nextInt();
+            dia = Dia.values()[opcion].name();
+            System.out.println("Ingrese la Hora de Inicio");
+            xhoraInicio = entrada.nextLine();
+            System.out.println("Ingrese la Hora de Finalizacion");
+            yhoraFinal = entrada.nextLine();
+            System.out.println("Ingrese la Capacidad maxima de Clientes en la clase");
+            capacidad = entrada.nextInt();
+            for (int w = 0; w < instructor.getServicios().size(); w++) {
+                System.out.print(w + 1);
+                System.out.println(". " + instructor.getServicios().get(w).getNombreEvento());
+            }
+            System.out.println("Ingrese el digito que representa el servicio que desea impartir ");
+            numServicio = entrada.nextInt();
+            String[] arrayInicio = xhoraInicio.split(":", 2);//se parsea la hora para convertirlo a formato localTIme
+            int horaI = Integer.parseInt(arrayInicio[0]);
+            int minutosI = Integer.parseInt(arrayInicio[1]);
+            LocalTime horaInicio = LocalTime.of(horaI, minutosI);
 
-        String[] arrayFinal = yhoraFinal.split(":", 2);
-        int horaF = Integer.parseInt(arrayFinal[0]);
-        int minutosF = Integer.parseInt(arrayFinal[1]);
-        LocalTime horaFinal = LocalTime.of(horaF, minutosF);
-        control.nuevaClase(capacidad, dia, horaInicio, horaFinal, instructor, instructor.getServicios().get(numServicio));
+            String[] arrayFinal = yhoraFinal.split(":", 2);
+            int horaF = Integer.parseInt(arrayFinal[0]);
+            int minutosF = Integer.parseInt(arrayFinal[1]);
+            LocalTime horaFinal = LocalTime.of(horaF, minutosF);
+            control.nuevaClase(capacidad, dia, horaInicio, horaFinal, instructor, instructor.getServicios().get(numServicio));
+        } else {
+            System.out.println("Su cédula no se encuentra registrada en el sistema, por favor ingrese una cédula válida para poder programar una clase");
+        }
 
     }
 
     public static void verClase() {
         System.out.println("----- Ver Información de clase -----" + "\n");
-        ArrayList Classes = control.allClaseMes();
+        ArrayList<Clase> Classes = control.allClaseMes();
 
         //Mostrando las clases disponibles
-        Iterator it = Classes.iterator();
-        int cont = 1;
-        while (it.hasNext()) {
-            System.out.println(cont + "-->" + it.next());
-            cont++;
+        for(int i=0; i<Classes.size(); i++){
+            Clase clase=Classes.get(i);
+            System.out.println("Clase #"+(i+1));
+            System.out.println(clase.getServicio().getNombreEvento());
+            System.out.println(clase.getHorario().getHoraInicio()+"-->"+clase.getHorario().getHoraFinal());
+            System.out.println("----------------");
         }
+
         //Respuesta del usuario
         Scanner entrada = new Scanner(System.in);
         System.out.println("Ingrese el número de clase que desea visualizar: " + "\n");
-        String numClassS = entrada.nextLine();
-        int numClass = Integer.parseInt(numClassS);
+        int numClass = entrada.nextInt()-1;
+        
         //Visualización de la información de la clase
-        System.out.println(Classes.get(numClass));
+        System.out.println("Número identificador de la clase: "+Classes.get(numClass).getIdClase());
+        System.out.println("Capacidad: "+Classes.get(numClass).getCapacidad()+" personas");
+        System.out.println("Horario: "+Classes.get(numClass).getHorario().getHoraInicio()+"-->"+Classes.get(numClass).getHorario().getHoraFinal());
+        System.out.println("Instructor: "+Classes.get(numClass).getInstructor().getNombre()+" "+Classes.get(numClass).getInstructor().getApellido());
+        System.out.println("Servicio: "+Classes.get(numClass).getServicio().getNombreEvento());
+        System.out.println("Descripcion de Servicio: "+Classes.get(numClass).getServicio().getDescripcion());
+        System.out.println();
     }
 
     public static void reservarClase() {
@@ -293,7 +316,8 @@ public class SalaEntrenamiento {
         cedula = entrada.nextLine();
         Cliente cliente = null;
         for (int i = 0; i < control.allClientes().size(); i++) {
-            if (control.allClientes().get(i).getCedula() == cedula) {
+            if (control.allClientes().get(i).getCedula().equals(cedula) ) {
+//                System.out.println(control.allClientes().get(i).getCedula());
                 cliente = control.allClientes().get(i);
                 esCliente = true;
             }
@@ -305,7 +329,7 @@ public class SalaEntrenamiento {
             for (int i = 0; i < clases.size(); i++) {
                 System.out.println("------------------------------------------------------------------");
                 System.out.println("Identificador de la clase: " + secuenciaClases);
-                System.out.println("Nombre de la clase: " + clases.get(i).getServicio().getDescripcion() + "\n");
+                System.out.println("Nombre de la clase: " + clases.get(i).getServicio().getNombreEvento() + "\n");
                 System.out.println("Instructor: " + clases.get(i).getInstructor().getNombre() + "\n");
                 System.out.println("La clase se imparte el día: " + clases.get(i).getHorario().getDia() + "\n");
                 System.out.println("Hora de inicio: " + clases.get(i).getHorario().getHoraInicio() + "\n");
@@ -325,6 +349,16 @@ public class SalaEntrenamiento {
         } else {
             System.out.println("Su cédula no se encuentra registrada en el sistema, por favor ingrese una cédula válida para poder reservar un espacio en las clases");
         }
+    }
+    
+        public static void allClientes() {
+        ArrayList<Cliente> lista = control.allClientes();
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println("\nCliente #"+(i + 1));
+            System.out.println(lista.get(i).getNombre() + " " + lista.get(i).getApellido());
+            System.out.println(lista.get(i).getCedula());
+        }
+
     }
 
     public static void completarDatos(){
@@ -358,6 +392,7 @@ public class SalaEntrenamiento {
         servicios.add(control.allServicios().get(0));
         servicios.add(control.allServicios().get(1));
         control.nuevoInstructor("Oscar", "Segura", "109760070", "83679661", "mayecedeno@gmail.com", "maye1234", Estado.FIJO.toString(),servicios);
+        
 
         servicios.clear();
         servicios.add(control.allServicios().get(2));
@@ -402,9 +437,11 @@ public class SalaEntrenamiento {
     public static void main(String[] args) {
         control = new Controller();
         
+        
         Scanner entrada = new Scanner(System.in);
-        int opcion;
+        int opcion=0;
         System.out.println(" Bienvenido al Sistema De Gestion del Gimnasio ");
+        while(opcion!=11){
         System.out.println(" ------ Menu Principal ------");
         System.out.println(" 1. Crear Sala ");
         System.out.println(" 2. Registro de Servicios ");
@@ -415,38 +452,51 @@ public class SalaEntrenamiento {
         System.out.println(" 7. Programar Clase ");
         System.out.println(" 8. Reservar Clase ");
         System.out.println(" 9. Ver Clase ");
+        System.out.println(" 10. Visualizacion de Clientes ");
+        System.out.println(" 11. Salir ");
+        
+        
         opcion = entrada.nextInt();
+        
+            switch (opcion) {
+                case 1:
+                    crearSala();
+                    completarDatos();
+                    break;
+                case 2:
+                    registrarServicios();
+                    break;
+                case 3:
+                    allServicios();
+                    break;
+                case 4:
+                    registroInstructores();
+                    break;
+                case 5:
+                    allInstructores();
+                    break;
+                case 6:
+                    matriculaCliente();
+                    break;
+                case 7:
+                    programarClase();
+                    break;
+                case 8: 
+                    reservarClase();
+                    break;
+                case 9:
+                    verClase();
+                    break;
+                case 10:
+                    allClientes();
+                    break;
+                case 11:
+                    System.exit(0);
 
-        switch (opcion) {
-            case 1:
-                crearSala();
-                completarDatos();
-                break;
-            case 2:
-                registrarServicios();
-                break;
-            case 3:
-                allServicios();
-                break;
-            case 4:
-                registroInstructores();
-                break;
-            case 5:
-                allInstructores();
-                break;
-            case 6:
-                matriculaCliente();
-                break;
-            case 7:
-                programarClase();
-                break;
-            case 8: 
-                reservarClase();
-                break;
-            case 9:
-                verClase();
-
+            }
         }
+
+
 
     }
 

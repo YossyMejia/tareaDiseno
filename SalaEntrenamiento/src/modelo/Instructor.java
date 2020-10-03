@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class Instructor extends Persona{
     private String estado;
-    private ArrayList<Servicio> servicios;
+    private ArrayList<Servicio> servicios = null;
 
 /**
  * 
@@ -32,6 +32,9 @@ public class Instructor extends Persona{
             String pEstado, ArrayList<Servicio> pServicios) {
         super(pNombre, pApellido, pCedula, pTelefono, pCorreo, pPassword);
         estado=pEstado;
+//        for(int i=0;i<pServicios.size();i++){
+//            servicios.add(pServicios.get(i));
+//        }
         servicios=pServicios;
     }
 
