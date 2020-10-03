@@ -314,7 +314,80 @@ public class SalaEntrenamiento {
         }
     }
 
+    public static void completarDatos(){
+        //Crear servicios
+        control.createServicio("Cxworx", "Se enfoca en trabajar principalmente la zona central del cuerpo, también llamado core. Se ejercitan los músculos del abdomen, oblicuos y espalda baja con trabajo de fuerza y tono, otros nombres no tan comerciales es core training");
+        control.createServicio("Bosu", "Se pueden realizar ejercicios aeróbicos como caminar, correr, saltar; o se puede hacer ejercicios de fuerza, de tono, de abdomen, funcionales y de estabilidad encima del bosu. Es un entrenamiento basado en equilibrio y balance.");
+        control.createServicio("BodyJam", "Se basa en realizar ejercicio aeróbico mediante el baile principalmente con música funk, Groove, hip hop, disco y Jazz. Promueve un aumento de la conciencia corporal, mejora la calidad del movimiento, ayuda a quemar grasa y desarrolla la noción del ritmo.");
+        control.createServicio("TRX", "Utiliza ejercicios funcionales con el peso corporal pero con la gran diferencia de estar en suspensión mediante unos arneses que se fijan a una puerta, pared o algún elemento elevado y a su vez a las manos o pies.");
+        control.createServicio("CrossFit", "Se basa en realizar ejercicios funcionales, de alta intensidad y corta duración, constantemente variados y muy creativos, como puede ser subir una cuerda, golpear una llanta con un mazo hasta el ejercicio menos imaginado.");
+        control.createServicio("BodyPump", "Es una clase que se realiza con una barra y discos, desarrolla la fuerza y resistencia y da tono muscular, pero también está diseñada para incrementar el gasto calórico de tal forma que ayuda también a mejorar la composición corporal y por tanto a perder grasa.");
+        control.createServicio("Entrenamiento funcional", "Se basa en realizar ejercicios que imitan los movimientos o trabajos físicos de la vida cotidiana, se utiliza el peso corporal y accesorios tales como poleas, mancuernas, pelotas medicinales, trampolines, conos, colchonetas, bandas elásticas y steps ente otros.");
+        control.createServicio("Aerobox", "Esta actividad incluye movimientos de kickboxing mezclados con aerobics, por lo que se trata de una opción muy diferente. Mejora la resistencia física, el tono muscular, ayuda en la pérdida de grasa corporal.");
+        control.createServicio("TaeBo", "Incrementa la resistencia cardiaca, la fuerza, la flexibilidad y ayuda en la perdida de grasa corporal. Si tienes gusto por las artes marciales sin contacto y quieres tener un buen entrenamiento cardiovascular al mismo tiempo esta es tu opción. ");
+        control.createServicio("Zumba", "Es un una actividad en donde se combinan movimientos de baile con rutinas aeróbicas principalmente con música latina como salsa, merengue, cumbia, reggaetón y samba.");
+        
+        //Crear Clientes
+        Date fecha= new Date();
+        control.createClient("Ruben", "Palma", "64286277", "63588868", "Ruben@gmail.com" , "78968136", fecha, fecha);
+        control.createClient("Rafael" , "Frances", "33323492", "63588868", "Rafael@gmail.com" , "78968136", fecha, fecha);
+        control.createClient("Santiago" , "Ye", "55223165", "63588868", "Santiago@gmail.com" , "78968136", fecha, fecha);
+        control.createClient("Carlos" , "Alberto" , "95854526", "63588868", "Carlos@gmail.com" , "78968136", fecha, fecha);
+        control.createClient("Segundo" , "Alcaraz", "92193077", "63588868", "Segundo@gmail.com" , "78968136", fecha, fecha);
+        control.createClient("Anna" , "Olmo", "94851247", "63588868", "Anna@gmail.com" , "78968136", fecha, fecha);
+        control.createClient("Sarai" , "Cervantes", "92507729", "63588868", "Sarai@gmail.com" , "78968136", fecha, fecha);
+        control.createClient("Maria" , "Salud", "53651750", "63588868", "Maria@gmail.com" , "78968136", fecha, fecha);
+        control.createClient("Iria" , "Arribas", "68194728", "63588868", "Iria@gmail.com" , "78968136", fecha, fecha);
+        
+        //Crear Instructores
+        ArrayList<Servicio> servicios = new ArrayList<Servicio>();
+
+        servicios.add(control.allServicios().get(0));
+        servicios.add(control.allServicios().get(1));
+        control.nuevoInstructor("Oscar", "Segura", "109760070", "83679661", "mayecedeno@gmail.com", "maye1234", Estado.FIJO.toString(),servicios);
+
+        servicios.clear();
+        servicios.add(control.allServicios().get(2));
+        servicios.add(control.allServicios().get(3));
+        control.nuevoInstructor("Melissa", "Fuentes", "109876534", "88238572", "melifuentes80@gmail.com", "meli1234", Estado.TEMPORAL.toString(),servicios);
+
+        servicios.clear();
+        servicios.add(control.allServicios().get(4));
+        servicios.add(control.allServicios().get(5));
+        control.nuevoInstructor("César", "Milán", "102367128", "82348817", "encantadordeperros@gmail.com", "cesar1234", Estado.FIJO.toString(),servicios);
+
+        servicios.clear();
+        servicios.add(control.allServicios().get(6));
+        servicios.add(control.allServicios().get(7));
+        control.nuevoInstructor("Jennifer", "Zamora", "105788345", "89908223", "jenni0987@gmail.com", "jenni1234", Estado.FIJO.toString(),servicios);
+
+        servicios.clear();
+        servicios.add(control.allServicios().get(8));
+        servicios.add(control.allServicios().get(9));
+        control.nuevoInstructor("Bryan", "Rodríguez", "106753456", "85983919", "bryan0104@gmail.com", "bryan1234", Estado.TEMPORAL.toString(),servicios);
+
+        servicios.clear();
+    
+        
+        
+        //Crear Clases
+        control.nuevaClase(15, "LUNES", LocalTime.of(7, 0), LocalTime.of(8, 0), control.allInstructores().get(0), control.allServicios().get(1));
+        control.nuevaClase(15, "MARTES", LocalTime.of(8, 0), LocalTime.of(9, 0), control.allInstructores().get(1), control.allServicios().get(0));
+        control.nuevaClase(15, "LUNES", LocalTime.of(9, 0), LocalTime.of(10, 0), control.allInstructores().get(2), control.allServicios().get(8));
+        control.nuevaClase(15, "MIERCOLES", LocalTime.of(7, 0), LocalTime.of(8, 0), control.allInstructores().get(3), control.allServicios().get(4));
+        control.nuevaClase(15, "VIERNES", LocalTime.of(12, 0), LocalTime.of(13, 0), control.allInstructores().get(4), control.allServicios().get(5));
+        control.nuevaClase(15, "JUEVES", LocalTime.of(7, 0), LocalTime.of(8, 0), control.allInstructores().get(2), control.allServicios().get(7));
+        control.nuevaClase(15, "MARTES", LocalTime.of(9, 0), LocalTime.of(10, 0), control.allInstructores().get(3), control.allServicios().get(9));
+        control.nuevaClase(15, "LUNES", LocalTime.of(15, 0), LocalTime.of(17, 0), control.allInstructores().get(2), control.allServicios().get(2));
+        
+        
+        
+        
+        
+    }
+    
     public static void main(String[] args) {
+        
         Scanner entrada = new Scanner(System.in);
         int opcion;
         System.out.println(" Bienvenido al Sistema De Gestion del Gimnasio ");
@@ -333,6 +406,7 @@ public class SalaEntrenamiento {
         switch (opcion) {
             case 1:
                 crearSala();
+                completarDatos();
                 break;
             case 2:
                 registrarServicios();
